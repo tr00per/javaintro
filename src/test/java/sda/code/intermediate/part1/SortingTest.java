@@ -125,7 +125,6 @@ public class SortingTest {
 
 	@Test
 	public void testSortComparable() {
-		// fail("Uncomment the test");
 		Person outArray[] = sut.sortComparable(comparableArray);
 		assertArrayEquals(comparableSortedArray, outArray);
 	}

@@ -2,7 +2,6 @@ package sda.code.intermediate;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 import java.util.Properties;
@@ -10,11 +9,6 @@ import java.util.Properties;
 import org.junit.Test;
 
 public class SelfTest {
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void simpleFileUtilsTest() {

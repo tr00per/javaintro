@@ -1,12 +1,10 @@
 package sda.code.intermediate.part1;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import sda.code.intermediate.part1.exercises.data.Item;
@@ -17,7 +15,6 @@ import sda.code.intermediate.part1.exercises.patterns.ItemBuilder;
 import sda.code.intermediate.part1.exercises.patterns.ProductFactory;
 import sda.code.intermediate.part1.exercises.patterns.ServiceBuilder;
 import sda.code.intermediate.part1.exercises.patterns.SettingMissing;
-import sda.code.intermediate.part1.exercises.patterns.Settings;
 
 public class DesignPatternsTest {
 

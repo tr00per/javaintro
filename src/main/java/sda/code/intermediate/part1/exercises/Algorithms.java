@@ -12,11 +12,11 @@ public class Algorithms {
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 
-	public long factorial(long n) {
+	public long factorial(int n) {
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 
-	public long fibonacci(long n) {
+	public long fibonacci(int n) {
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 

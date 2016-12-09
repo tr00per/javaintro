@@ -41,7 +41,7 @@ public class FunctionalTest {
 	}
 
 	@Test
-	public void testCountEven() {
+	public void testCountOdd() {
 		long out = sut.countOdd(list);
 		assertEquals(4L, out);
 	}

@@ -30,18 +30,18 @@ public class Algorithms {
 		return result;
 	}
 
-	public long factorial(long n) {
+	public long factorial(int n) {
 		if (n < 0) {
 			throw new IllegalArgumentException("Can't compute factorial of a negative number!");
 		}
 		long result = 1L;
-		for (long i = 1L; i <= n; ++i) {
+		for (int i = 1; i <= n; ++i) {
 			result *= i;
 		}
 		return result;
 	}
 
-	public long fibonacci(long n) {
+	public long fibonacci(int n) {
 		if (n < 0) {
 			throw new IllegalArgumentException("Can't compute fibonacci number of a negative index!");
 		}
@@ -81,7 +81,7 @@ public class Algorithms {
 		}
 		int array[] = new int[length];
 		for (int i = 0; i < length; ++i) {
-			array[i] = (int) Math.round(2 * Math.random() * Integer.MAX_VALUE + Integer.MIN_VALUE);
+			array[i] = (int) Math.round(2L * Math.random() * Integer.MAX_VALUE + Integer.MIN_VALUE);
 		}
 		return array;
 	}
