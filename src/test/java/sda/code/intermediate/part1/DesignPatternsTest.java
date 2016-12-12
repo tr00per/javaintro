@@ -1,6 +1,7 @@
 package sda.code.intermediate.part1;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
@@ -10,11 +11,13 @@ import org.junit.Test;
 import sda.code.intermediate.part1.exercises.data.Item;
 import sda.code.intermediate.part1.exercises.data.Product;
 import sda.code.intermediate.part1.exercises.data.Service;
+import sda.code.intermediate.part1.exercises.patterns.BuilderPreparationFailed;
 import sda.code.intermediate.part1.exercises.patterns.InvalidBuilderState;
 import sda.code.intermediate.part1.exercises.patterns.ItemBuilder;
 import sda.code.intermediate.part1.exercises.patterns.ProductFactory;
 import sda.code.intermediate.part1.exercises.patterns.ServiceBuilder;
 import sda.code.intermediate.part1.exercises.patterns.SettingMissing;
+import sda.code.intermediate.part1.exercises.patterns.Settings;
 
 public class DesignPatternsTest {
 
@@ -53,7 +56,12 @@ public class DesignPatternsTest {
 
 	@Test(expected = InvalidBuilderState.class)
 	public void incompleteServiceBuild() {
-		new ItemBuilder().withName("Calculator watch").build();
+		new ServiceBuilder().withName("Calculator watch").build();
+	}
+
+	@Test(expected = InvalidBuilderState.class)
+	public void incompleteServiceBuildSuper() {
+		new ServiceBuilder().withName("Calculator watch").withTime(10).build();
 	}
 
 	@Test(expected = InvalidBuilderState.class)
@@ -61,9 +69,9 @@ public class DesignPatternsTest {
 		new ItemBuilder().withName("TV").withPrice("500").withWeight(-1.0).build();
 	}
 
-	@Test(expected = InvalidBuilderState.class)
+	@Test(expected = BuilderPreparationFailed.class)
 	public void invalidBuilderConvertedException() {
-		new ServiceBuilder().withName("MMO").withPrice("X");
+		new ServiceBuilder().withName("MMO").withPrice("X").withTime(10).build();
 	}
 
 	@Test

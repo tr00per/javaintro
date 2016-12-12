@@ -13,13 +13,14 @@ public class ServiceBuilder extends ProductBuilder<ServiceBuilder, Service> {
 	@Override
 	protected void validate() {
 		super.validate();
-		if (time <= 0) {
+		if (time == null || time <= 0) {
 			throw new InvalidBuilderState("Time cannot be zero or less");
 		}
 	}
 
 	@Override
 	public Service build() {
+		prepare();
 		validate();
 		return new Service(name, price, time);
 	}

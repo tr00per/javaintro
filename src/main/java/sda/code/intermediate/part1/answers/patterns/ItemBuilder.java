@@ -13,13 +13,14 @@ public class ItemBuilder extends ProductBuilder<ItemBuilder, Item> {
 	@Override
 	protected void validate() {
 		super.validate();
-		if (weight <= 0.0) {
-			throw new InvalidBuilderState("Weight cannot be zero or less");
+		if (weight == null || weight < 0.0) {
+			throw new InvalidBuilderState("Weight cannot be less than zero");
 		}
 	}
 
 	@Override
 	public Item build() {
+		prepare();
 		validate();
 		return new Item(name, price, weight);
 	}

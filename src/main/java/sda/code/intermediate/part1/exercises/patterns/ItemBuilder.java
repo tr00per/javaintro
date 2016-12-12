@@ -10,12 +10,9 @@ public class ItemBuilder extends ProductBuilder<ItemBuilder, Item> {
 	}
 
 	@Override
-	protected void validate() {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
 	public Item build() {
+		prepare();
+		validate();
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 

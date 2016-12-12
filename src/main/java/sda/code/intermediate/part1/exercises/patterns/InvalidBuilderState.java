@@ -8,8 +8,4 @@ public class InvalidBuilderState extends RuntimeException {
 		super(msg);
 	}
 
-	public InvalidBuilderState(NumberFormatException e) {
-		super(e);
-	}
-
 }

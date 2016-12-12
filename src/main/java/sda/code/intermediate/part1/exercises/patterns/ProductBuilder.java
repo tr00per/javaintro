@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 public abstract class ProductBuilder<T, R> {
 	protected String name;
 	protected BigDecimal price;
+	private String maybePrice;
 
 	public T withName(String name) {
 		this.name = name;
@@ -13,8 +14,12 @@ public abstract class ProductBuilder<T, R> {
 	}
 
 	public T withPrice(String price) {
-		this.price = new BigDecimal(price);
+		maybePrice = price;
 		return (T) this;
+	}
+
+	protected void prepare() {
+		throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	protected void validate() {

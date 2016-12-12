@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 public abstract class ProductBuilder<T, R> {
 	protected String name;
 	protected BigDecimal price;
+	private String maybePrice;
 
 	public T withName(String name) {
 		this.name = name;
@@ -13,12 +14,18 @@ public abstract class ProductBuilder<T, R> {
 	}
 
 	public T withPrice(String price) {
-		try {
-			this.price = new BigDecimal(price);
-		} catch (NumberFormatException e) {
-			throw new InvalidBuilderState(e);
-		}
+		maybePrice = price;
 		return (T) this;
+	}
+
+	protected void prepare() {
+		try {
+			price = new BigDecimal(maybePrice);
+		} catch (NumberFormatException e) {
+			throw new BuilderPreparationFailed("Price must be a number");
+		} catch (NullPointerException e) {
+			throw new InvalidBuilderState("Price must be set");
+		}
 	}
 
 	protected void validate() {

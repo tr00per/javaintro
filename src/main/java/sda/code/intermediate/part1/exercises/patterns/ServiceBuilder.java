@@ -10,12 +10,9 @@ public class ServiceBuilder extends ProductBuilder<ServiceBuilder, Service> {
 	}
 
 	@Override
-	protected void validate() {
-		throw new UnsupportedOperationException("Not implemented yet");
-	}
-
-	@Override
 	public Service build() {
+		prepare();
+		validate();
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 
