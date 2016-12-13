@@ -1,4 +1,4 @@
-package sda.code.intermediate.part1.exercises;
+package sda.code.intermediate.part1;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.function.Function;
 
 import sda.code.intermediate.SortingUtils;
+import sda.code.intermediate.part1.exercises.Algorithms;
+import sda.code.intermediate.part1.exercises.Sorting;
 
-public class MemoryDemo {
+public class RuntimeDemo {
 
 	public static void main(String args[]) throws IOException {
 		final Sorting sort = new Sorting();
