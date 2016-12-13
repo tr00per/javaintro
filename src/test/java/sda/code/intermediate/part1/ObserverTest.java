@@ -48,7 +48,17 @@ public class ObserverTest {
 		products.add(ProductFactory.testProduct());
 		Cart cart = new Cart(products);
 
-		assertEquals(new BigDecimal(ProductFactory.TEST_PRODUCT_PRICE), cart.getTotal());
+		assertEquals(TEST_PRICE, cart.getTotal());
+	}
+
+	@Test
+	public void priceInitializationForSecondSubscriber() {
+		products.add(ProductFactory.testProduct());
+		Cart cart1 = new Cart(products);
+		Cart cart2 = new Cart(products);
+
+		assertEquals(TEST_PRICE, cart1.getTotal());
+		assertEquals(TEST_PRICE, cart2.getTotal());
 	}
 
 	@Test(expected = UnhandledMessage.class)

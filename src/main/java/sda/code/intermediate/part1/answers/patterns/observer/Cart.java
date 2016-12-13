@@ -7,12 +7,10 @@ import sda.code.intermediate.part1.answers.data.Product;
 public class Cart implements Subscriber<Product> {
 
 	private BigDecimal total;
-	private final ListOfProducts products;
 
 	public Cart(ListOfProducts products) {
 		this.total = BigDecimal.ZERO;
-		this.products = products;
-		this.products.subscribe(this);
+		products.subscribe(this);
 	}
 
 	public BigDecimal getTotal() {

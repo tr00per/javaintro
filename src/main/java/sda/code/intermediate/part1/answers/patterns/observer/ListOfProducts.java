@@ -29,7 +29,7 @@ public class ListOfProducts implements Publisher<Product> {
 	@Override
 	public void subscribe(Subscriber<Product> subscriber) {
 		subscribers.add(subscriber);
-		products.forEach(p -> fireEvent(new ProductAdded(p)));
+		products.forEach(p -> subscriber.handle(new ProductAdded(p)));
 	}
 
 	private void fireEvent(Event<Product> event) {
