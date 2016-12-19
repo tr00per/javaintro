@@ -24,7 +24,7 @@ public class RuntimeDemo {
 		System.in.read();
 
 		System.out.println("Start |->");
-		int inArr[] = new Algorithms().createRandomArray(10000000);
+		int inArr[] = new Algorithms().createRandomArray(10000);
 		int outArr[];
 
 		System.out.println("==================\nUnboxed values");
