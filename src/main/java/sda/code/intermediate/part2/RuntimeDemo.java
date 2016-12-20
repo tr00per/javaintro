@@ -2,6 +2,7 @@ package sda.code.intermediate.part2;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
@@ -57,6 +58,17 @@ public class RuntimeDemo {
 			System.out.println("Time spent sorting: " + (stop - start) / 1000000L);
 		}
 		System.out.println("Sorted " + arrayList.size() + " elements");
+
+		System.out.println("==================\nUnboxed values (standard sort)");
+		System.out.println("First number: " + inArr[0]);
+		{
+			long start = System.nanoTime();
+			Arrays.sort(inArr);
+			long stop = System.nanoTime();
+			System.out.println("Time spent sorting: " + (stop - start) / 1000000L);
+		}
+		System.out.println("First number: " + inArr[0]);
+
 		System.out.println("->| Finish");
 	}
 }

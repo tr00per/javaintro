@@ -26,12 +26,15 @@ public class Streaming implements Summarizer {
 	public void summarizeToFile(String output) throws IOException {
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader().parse(reader);
 		Writer writer = new FileWriter(output);
-		CSVPrinter printer = CSVFormat.RFC4180.withHeader("County", "Avg. TIV", "Min TIV", "Max TIV").print(writer);
+		CSVPrinter printer = CSVFormat.RFC4180.withHeader("Group", "Size", "Avg. Value", "Min. Value", "Max. Value")
+				.print(writer);
 
 		try {
 			Stream<CSVRecord> stream = StreamSupport.stream(records.spliterator(), false);
 
-			stream.collect(Collectors.toMap(csv -> csv.get("county"), Streaming::toSummaryRecord, SummaryRecord::plus))
+			stream.filter(csv -> !csv.get("SAT_AVG_ALL").equalsIgnoreCase("null"))
+					.collect(
+							Collectors.toMap(csv -> csv.get("STABBR"), Streaming::toSummaryRecord, SummaryRecord::plus))
 					.forEach(Streaming.print(printer));
 		} finally {
 			printer.close();
@@ -39,21 +42,18 @@ public class Streaming implements Summarizer {
 	}
 
 	private static SummaryRecord toSummaryRecord(CSVRecord csv) {
-		double tiv = Double.parseDouble(csv.get("tiv_2012"));
-		// String construction = csv.get("construction");
-		// String line = csv.get("line");
-		return new SummaryRecord(1, tiv, tiv, tiv);
+		double value = Double.parseDouble(csv.get("SAT_AVG_ALL"));
+		return new SummaryRecord(1, value, value, value);
 	}
 
 	private static BiConsumer<String, SummaryRecord> print(CSVPrinter printer) {
 		return (String key, SummaryRecord summary) -> {
 			try {
-				printer.printRecord(key, summary.count, summary.totalTIV / summary.count, summary.minTIV,
-						summary.maxTIV);
+				printer.printRecord(key, summary.count, summary.totalValue / summary.count, summary.minValue,
+						summary.maxValue);
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
 		};
-
 	}
 }

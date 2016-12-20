@@ -30,36 +30,53 @@ public class Traditional implements Summarizer {
 
 	private void saveSummary(Map<String, SummaryRecord> summarizer, String output) throws IOException {
 		Writer writer = new FileWriter(output);
-		CSVPrinter printer = CSVFormat.RFC4180.withHeader("County", "Avg. TIV", "Min TIV", "Max TIV").print(writer);
+		CSVPrinter printer = CSVFormat.RFC4180.withHeader("Group", "Size", "Avg. Value", "Min. Value", "Max. Value")
+				.print(writer);
 		try {
-			for (Entry<String, SummaryRecord> entry : summarizer.entrySet()) {
-				SummaryRecord summary = entry.getValue();
-				printer.printRecord(entry.getKey(), summary.count, summary.totalTIV / summary.count, summary.minTIV,
-						summary.maxTIV);
-			}
+			printEntries(printer, summarizer);
 		} finally {
 			printer.close();
 		}
 	}
 
+	private void printEntries(CSVPrinter printer, Map<String, SummaryRecord> summarizer) throws IOException {
+		for (Entry<String, SummaryRecord> entry : summarizer.entrySet()) {
+			printEntry(printer, entry);
+		}
+	}
+
+	private void printEntry(CSVPrinter printer, Entry<String, SummaryRecord> entry) throws IOException {
+		SummaryRecord summary = entry.getValue();
+		printer.printRecord(entry.getKey(), summary.count, summary.totalValue / summary.count, summary.minValue,
+				summary.maxValue);
+	}
+
 	private void fillSummary(Map<String, SummaryRecord> summarizer) throws IOException {
 		Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader().parse(reader);
 		for (CSVRecord record : records) {
-			String county = record.get("county");
-			double tiv = Double.parseDouble(record.get("tiv_2012"));
-			// String construction = record.get("construction");
-			// String line = record.get("line");
-
-			SummaryRecord summary = summarizer.getOrDefault(county, new SummaryRecord());
-			summary.totalTIV += tiv;
-			summary.count += 1;
-			if (summary.minTIV == null || summary.minTIV > tiv) {
-				summary.minTIV = tiv;
-			}
-			if (summary.maxTIV == null || summary.maxTIV < tiv) {
-				summary.maxTIV = tiv;
-			}
-			summarizer.put(county, summary);
+			updateWithRecord(summarizer, record);
 		}
+	}
+
+	private void updateWithRecord(Map<String, SummaryRecord> summarizer, CSVRecord record) {
+		double value;
+		try {
+			value = Double.parseDouble(record.get("SAT_AVG_ALL"));
+		} catch (NumberFormatException e) {
+			return;
+		}
+		final String group = record.get("STABBR");
+
+		SummaryRecord summary = summarizer.getOrDefault(group, new SummaryRecord());
+
+		summary.totalValue += value;
+		summary.count += 1;
+		if (summary.minValue == null || summary.minValue > value) {
+			summary.minValue = value;
+		}
+		if (summary.maxValue == null || summary.maxValue < value) {
+			summary.maxValue = value;
+		}
+		summarizer.put(group, summary);
 	}
 }
