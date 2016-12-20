@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class WordCount {
 
 	public static void main(String[] args) throws IOException {
-		File book = new File("/home/czajka/data/Pride_and_Prejudice.txt");
+		File book = new File("/home/czajka/data/Shakespeare.txt");
 		Scanner sc = new Scanner(book);
 		sc.useDelimiter("\\W+");
 
