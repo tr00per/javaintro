@@ -3,8 +3,10 @@ package sda.code.intermediate.part3.answers.book;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+//import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+//import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -22,8 +24,15 @@ public class WordCount {
 			gatherStats(sc, words);
 		}
 
-		words.entrySet().stream().sorted((e1, e2) -> e2.getValue() - e1.getValue()).limit(20)
-				.forEach(e -> System.out.println(e.getKey() + " = " + e.getValue()));
+//		List<Map.Entry<String, Integer>> list = new ArrayList<>(words.entrySet());
+//		list.sort((e1, e2) -> e2.getValue() - e1.getValue());
+//		list.sort(Map.Entry.comparingByValue(Collections.reverseOrder()));
+//		for (Map.Entry<String, Integer> e : list.subList(0, 20)) {
+//			System.out.println(e.getKey() + " = " + e.getValue());
+//		}
+
+//		words.entrySet().stream().sorted((e1, e2) -> e2.getValue() - e1.getValue()).limit(20)
+//				.forEach(e -> System.out.println(e.getKey() + " = " + e.getValue()));
 
 		words.entrySet().stream().sorted(Map.Entry.comparingByValue(Collections.reverseOrder())).limit(20)
 				.forEach(e -> System.out.println(e.getKey() + " = " + e.getValue()));
