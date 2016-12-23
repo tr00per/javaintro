@@ -17,7 +17,7 @@ public class WeatherApp {
 
 		final Coordinates coords = new Coordinates(51.783333, 19.466667);
 
-		WeatherClient client = WeatherClientStrategy.getClient("sync");
+		WeatherClient client = WeatherClientStrategy.getClient("async");
 
 		Optional<String> forecast = client.getWeather(endpoint, apiKey, coords);
 

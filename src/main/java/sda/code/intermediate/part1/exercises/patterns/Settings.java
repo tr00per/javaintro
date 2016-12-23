@@ -4,6 +4,10 @@ import java.util.Properties;
 
 import sda.code.intermediate.FileUtils;
 
+/**
+ * Klasa Settings ma przechowywać jedyną kopię wczytanej konfiguracji
+ * (Singleton) oraz stanowić adapter dla budowanej klasy Properties.
+ */
 public class Settings {
 
 	private final Properties props;

@@ -12,10 +12,14 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+/**
+ * Sources: https://hc.apache.org/httpcomponents-client-4.5.x/quickstart.html,
+ * https://hc.apache.org/httpcomponents-client-4.5.x/tutorial/html/index.html
+ */
 public class SynchronousHttpClient implements WeatherClient {
+	private static CloseableHttpClient httpclient = HttpClients.createDefault();
 
 	public Optional<String> getWeather(String endpoint, String apiKey, Coordinates coords) {
-		CloseableHttpClient httpclient = HttpClients.createDefault();
 		HttpGet httpGet = null;
 		try {
 			URIBuilder builder = new URIBuilder(endpoint).addParameter("appid", apiKey)

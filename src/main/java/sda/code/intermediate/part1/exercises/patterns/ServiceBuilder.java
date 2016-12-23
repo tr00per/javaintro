@@ -2,6 +2,9 @@ package sda.code.intermediate.part1.exercises.patterns;
 
 import sda.code.intermediate.part1.exercises.data.Service;
 
+/**
+ * @see ProductBuilder
+ */
 public class ServiceBuilder extends ProductBuilder<ServiceBuilder, Service> {
 	private Integer time;
 

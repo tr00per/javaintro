@@ -5,6 +5,10 @@ import java.util.List;
 
 import sda.code.intermediate.part1.exercises.data.Product;
 
+/**
+ * Lista produktów potrafi rozgłaszać zmianę swojego stanu do kogokolwiek, kto
+ * chce słuchać.
+ */
 public class ListOfProducts implements Publisher<Product> {
 
 	final List<Product> products;
@@ -28,6 +32,10 @@ public class ListOfProducts implements Publisher<Product> {
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 
+	/**
+	 * W miarę implementowania pozostałych metod powinien pojawić się powtarzany
+	 * fragment. To jest miejsce na ten fragment.
+	 */
 	private void fireEvent(Event<Product> event) {
 		throw new UnsupportedOperationException("Not implemented yet");
 	}

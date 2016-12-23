@@ -2,6 +2,10 @@ package sda.code.intermediate.part1.exercises.patterns;
 
 import sda.code.intermediate.part1.exercises.data.Product;
 
+/**
+ * Fabryka produktów powinna korzystać z wcześniej utworzonych klas typu
+ * builder.
+ */
 public class ProductFactory {
 
 	public static final String TEST_PRODUCT_NAME = "Test product";

@@ -10,6 +10,11 @@ import sda.code.intermediate.SortingUtils;
 import sda.code.intermediate.part1.exercises.Algorithms;
 import sda.code.intermediate.part1.exercises.Sorting;
 
+/**
+ * Krótki program służący do porównania szybkości działania zaimplementowanych
+ * algorytmów. Warto zobaczyć jak zmienia się czas wykonania w zależnośći od
+ * rozmiaru tablicy, zwiększając go x10 przy każdej próbie.
+ */
 public class RuntimeDemo {
 
 	public static void main(String args[]) throws IOException {
@@ -23,12 +28,12 @@ public class RuntimeDemo {
 		System.in.read();
 
 		System.out.println("Start");
-		int inArr[], outArr[];
+		int inArr[] = new Algorithms().createRandomArray(1000);
+		int outArr[];
 		Iterator<Function<int[], int[]>> sortersIter = sorters.iterator();
 		while (sortersIter.hasNext()) {
 			System.out.println("Running...");
 			Function<int[], int[]> sorter = sortersIter.next();
-			inArr = new Algorithms().createRandomArray(100000);
 			long start = System.nanoTime();
 			outArr = sorter.apply(inArr);
 			long stop = System.nanoTime();

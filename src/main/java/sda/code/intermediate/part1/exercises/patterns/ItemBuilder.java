@@ -2,6 +2,9 @@ package sda.code.intermediate.part1.exercises.patterns;
 
 import sda.code.intermediate.part1.exercises.data.Item;
 
+/**
+ * @see ProductBuilder
+ */
 public class ItemBuilder extends ProductBuilder<ItemBuilder, Item> {
 	private Double weight;
 

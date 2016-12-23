@@ -61,6 +61,9 @@ public class Person implements Comparable<Person> {
 		return true;
 	}
 
+	/**
+	 * Sortowanie powinno nastąpić po nazwiskach, a potem po imionach.
+	 */
 	@Override
 	public int compareTo(Person o) {
 		throw new UnsupportedOperationException("Not implemented yet");
