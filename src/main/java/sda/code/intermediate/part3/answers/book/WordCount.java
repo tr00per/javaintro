@@ -42,14 +42,13 @@ public class WordCount {
 			gatherStats(sc, words);
 		}
 
-		// Poniżej mamy 4 sposoby wykonania tej samej cznności, czyli
+		// Poniżej mamy 4 sposoby wykonania tej samej czynności, czyli
 		// wyświetlenia 20 najpopularniejszych słów w dokumencie.
 
 		{
 			// Styl imperatywny z własną funkcją porównującą
 			// Przepisujemy zbiór wartości z mapy do listy, bo ani mapy, ani
-			// zbioru,
-			// nie można posortować według swoch kryteriów.
+			// zbioru, nie można posortować według swoch kryteriów.
 			List<Map.Entry<String, Integer>> list = new ArrayList<>(words.entrySet());
 			list.sort((e1, e2) -> e2.getValue() - e1.getValue());
 			for (Map.Entry<String, Integer> e : list.subList(0, 20)) {

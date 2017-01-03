@@ -1,6 +1,6 @@
 package sda.code.intermediate.part2.answers.weather;
 
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 import com.google.gson.Gson;
 
@@ -9,7 +9,7 @@ import sda.code.intermediate.part2.answers.json.gson.WeatherGson;
 
 public class WeatherApp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		System.out.println("The Weather App");
 
 		final String endpoint = Settings.CONFIG.getString("weather.endpoint");
@@ -17,14 +17,22 @@ public class WeatherApp {
 
 		final Coordinates coords = new Coordinates(51.783333, 19.466667);
 
-		WeatherClient client = WeatherClientStrategy.getClient("async");
+		WeatherClient client = WeatherClientStrategy.getClient("sync");
 
-		Optional<String> forecast = client.getWeather(endpoint, apiKey, coords);
-
-		forecast.ifPresent(WeatherApp::convertAndDisplay);
+		for (int i = 0; i < 10; ++i) {
+			CompletableFuture<String> forecast = client.getWeather(endpoint, apiKey, coords);
+			forecast.whenComplete(WeatherApp::convertAndDisplay);
+		}
+		System.err.println("Finished!");
 	}
 
-	private static void convertAndDisplay(String forecast) {
+	private static void convertAndDisplay(String forecast, Throwable ex) {
+		if (ex != null) {
+			System.err.println("Downloading weather failed!");
+			ex.printStackTrace();
+			return;
+		}
+
 		WeatherGson weather = new Gson().fromJson(forecast, WeatherGson.class);
 		System.out.println(weather.getName());
 		System.out.println(weather.getMain().getTemp());

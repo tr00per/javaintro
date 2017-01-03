@@ -1,7 +1,6 @@
 package sda.code.intermediate.part1.exercises;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 
 public class Sorting {
