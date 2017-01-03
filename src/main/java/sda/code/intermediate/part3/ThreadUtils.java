@@ -1,4 +1,4 @@
-package sda.code.intermediate.part3.answers.concurrency;
+package sda.code.intermediate.part3;
 
 public class ThreadUtils {
 

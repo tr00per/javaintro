@@ -6,6 +6,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import sda.code.intermediate.part3.ThreadUtils;
+
 public class Queue03 {
 
 	private static final int NUM_OF_CONSUMER_THREADS = 5;

@@ -6,6 +6,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import sda.code.intermediate.part3.ThreadUtils;
+
 public class Queue01 {
 
 	private static BlockingQueue<Integer> queue = new LinkedBlockingQueue<>();
@@ -46,6 +48,7 @@ public class Queue01 {
 		}
 		producers.shutdown();
 		// running.compareAndSet(true, false);
+		// consumer.awaitTermination(1, TimeUnit.SECONDS);
 	}
 
 }
