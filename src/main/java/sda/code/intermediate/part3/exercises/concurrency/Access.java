@@ -9,6 +9,10 @@ public class Access {
 		System.out.println(accumulator);
 	}
 
+	/**
+	 * Zadanie: Zastosować jeden z mechanizmów synchronizacji, by otrzymać
+	 * przewidywalny wynik
+	 */
 	public static void main(String[] args) throws InterruptedException {
 		for (int i = 0; i < 20; ++i) {
 			new Thread(new Runnable() {

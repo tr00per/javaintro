@@ -45,7 +45,7 @@ public class Queue03 {
 		consumers.submit(Queue03::printAll);
 		consumers.shutdown();
 
-		for (int i = 0; i < 20; ++i) {
+		for (int i = 0; i < NUM_OF_CONSUMER_THREADS * 5; ++i) {
 			queue.add(i);
 		}
 

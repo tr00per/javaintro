@@ -30,15 +30,19 @@ public class Streaming implements Summarizer {
 				.print(writer);
 
 		try {
-			Stream<CSVRecord> stream = StreamSupport.stream(records.spliterator(), false);
-
-			stream.filter(csv -> !csv.get("SAT_AVG_ALL").equalsIgnoreCase("null"))
-					.collect(
-							Collectors.toMap(csv -> csv.get("STABBR"), Streaming::toSummaryRecord, SummaryRecord::plus))
-					.forEach(Streaming.print(printer));
+			saveStatistics(records, printer);
 		} finally {
 			printer.close();
 		}
+	}
+
+	private void saveStatistics(Iterable<CSVRecord> records, CSVPrinter printer) {
+		Stream<CSVRecord> stream = StreamSupport.stream(records.spliterator(), false);
+
+		stream.filter(csv -> !csv.get("SAT_AVG_ALL").equalsIgnoreCase("null"))
+				.collect(
+						Collectors.toMap(csv -> csv.get("STABBR"), Streaming::toSummaryRecord, SummaryRecord::plus))
+				.forEach(Streaming.print(printer));
 	}
 
 	private static SummaryRecord toSummaryRecord(CSVRecord csv) {
