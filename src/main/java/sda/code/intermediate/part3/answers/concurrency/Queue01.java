@@ -23,7 +23,7 @@ public class Queue01 {
 				break;
 			}
 		}
-		ThreadUtils.println(running.get());
+		ThreadUtils.println("Running: " + running.get());
 	}
 
 	private static void print(int counter) throws InterruptedException {
@@ -31,7 +31,7 @@ public class Queue01 {
 		ThreadUtils.println(++counter + ": " + item);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		ExecutorService consumer = Executors.newSingleThreadExecutor();
 		consumer.submit(Queue01::printWorker);
 		consumer.shutdown();
@@ -39,14 +39,13 @@ public class Queue01 {
 		ExecutorService producers = Executors.newFixedThreadPool(5);
 		for (int i = 0; i < 20; ++i) {
 			final int v = i;
-			producers.submit(new Runnable() {
-				@Override
-				public void run() {
-					queue.add(v);
-				}
+			producers.submit(() -> {
+				ThreadUtils.println(v);
+				queue.add(v);
 			});
 		}
 		producers.shutdown();
+		// producers.awaitTermination(1, TimeUnit.SECONDS);
 		// running.compareAndSet(true, false);
 		// consumer.awaitTermination(1, TimeUnit.SECONDS);
 	}

@@ -34,17 +34,18 @@ public class Compute {
 
 			final FormulaEvaluator evaluatorBefore = wb.getCreationHelper().createFormulaEvaluator();
 			CellValue cellValueBefore = evaluatorBefore.evaluate(resultCell);
-			System.out.println("Wartość bez uzupełnienia F1: " + cellValueBefore.getNumberValue());
+			System.out.println("Wartość G1 bez uzupełnienia F1: " + cellValueBefore.getNumberValue());
 
 			final Cell factorCell = row.createCell(5);
 			factorCell.setCellValue(5.0);
 
 			CellValue cellValueCached = evaluatorBefore.evaluate(resultCell);
-			System.out.println("Wartość po uzupełnieniu F1, z pamięci podręcznej: " + cellValueCached.getNumberValue());
+			System.out.println(
+					"Wartość G1 po uzupełnieniu F1, z pamięci podręcznej: " + cellValueCached.getNumberValue());
 
 			FormulaEvaluator evaluatorAfter = wb.getCreationHelper().createFormulaEvaluator();
 			CellValue cellValueAfter = evaluatorAfter.evaluate(resultCell);
-			System.out.println("Wartość po uzupełnieniu F1: " + cellValueAfter.getNumberValue());
+			System.out.println("Wartość G1 po uzupełnieniu F1: " + cellValueAfter.getNumberValue());
 
 			row.setHeightInPoints(60);
 

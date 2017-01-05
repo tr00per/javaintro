@@ -38,11 +38,9 @@ public class Queue03 {
 
 	public static void main(String[] args) throws InterruptedException {
 		ExecutorService consumers = Executors.newFixedThreadPool(NUM_OF_CONSUMER_THREADS);
-		consumers.submit(Queue03::printAll);
-		consumers.submit(Queue03::printAll);
-		consumers.submit(Queue03::printAll);
-		consumers.submit(Queue03::printAll);
-		consumers.submit(Queue03::printAll);
+		for (int i = 0; i < NUM_OF_CONSUMER_THREADS; ++i) {
+			consumers.submit(() -> printAll());
+		}
 		consumers.shutdown();
 
 		for (int i = 0; i < NUM_OF_CONSUMER_THREADS * 5; ++i) {

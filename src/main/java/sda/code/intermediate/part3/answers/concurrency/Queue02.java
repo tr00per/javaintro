@@ -4,7 +4,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import sda.code.intermediate.part3.ThreadUtils;
 
@@ -43,18 +42,13 @@ public class Queue02 {
 		ExecutorService producers = Executors.newFixedThreadPool(5);
 		for (int i = 0; i < 20; ++i) {
 			final int v = i;
-			producers.submit(new Runnable() {
-				@Override
-				public void run() {
-					queue.add(v);
-				}
-			});
+			producers.submit(() -> queue.add(v));
 		}
 		producers.shutdown();
 		// producers.awaitTermination(1, TimeUnit.SECONDS);
 
 		queue.add(-1);
-		consumer.awaitTermination(1, TimeUnit.SECONDS);
+		// consumer.awaitTermination(1, TimeUnit.SECONDS);
 	}
 
 }
