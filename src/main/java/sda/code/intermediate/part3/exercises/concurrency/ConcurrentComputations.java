@@ -22,8 +22,8 @@ public class ConcurrentComputations {
 
 	/**
 	 * Zadanie: Przerobić program tak, by długo działające zadania wykonały się
-	 * współbieżnie. Algorytm sortowania powinien pozostać bez zmian. Efektem
-	 * będzie, że suma czasów będzie większa od całkowitego czasu.
+	 * współbieżnie. Algorytm sortowania powinien pozostać bez zmian. W efekcie
+	 * suma czasów będzie większa od całkowitego czasu.
 	 */
 	public static void main(String[] args) {
 		Computation c1 = new Computation();
