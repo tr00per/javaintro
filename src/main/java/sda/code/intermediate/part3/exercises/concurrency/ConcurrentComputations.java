@@ -2,6 +2,7 @@ package sda.code.intermediate.part3.exercises.concurrency;
 
 import sda.code.intermediate.part1.answers.Algorithms;
 import sda.code.intermediate.part1.answers.Sorting;
+import sda.code.intermediate.part3.ThreadUtils;
 
 public class ConcurrentComputations {
 
@@ -10,11 +11,11 @@ public class ConcurrentComputations {
 		private int outArr[];
 
 		public long compute() {
-			System.out.println("Pierwszy element: " + inArr[0]);
+			ThreadUtils.println("Pierwszy element: " + inArr[0]);
 			long start = System.nanoTime();
 			outArr = new Sorting().bubbleSort(inArr);
 			long stop = System.nanoTime();
-			System.out.println("Pierwszy element: " + outArr[0]);
+			ThreadUtils.println("Pierwszy element: " + outArr[0]);
 			return stop - start;
 		}
 	}

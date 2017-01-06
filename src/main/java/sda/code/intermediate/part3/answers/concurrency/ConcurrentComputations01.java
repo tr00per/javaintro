@@ -8,6 +8,7 @@ import java.util.concurrent.Future;
 
 import sda.code.intermediate.part1.answers.Algorithms;
 import sda.code.intermediate.part1.answers.Sorting;
+import sda.code.intermediate.part3.ThreadUtils;
 
 public class ConcurrentComputations01 {
 
@@ -17,14 +18,13 @@ public class ConcurrentComputations01 {
 
 		@Override
 		public Long call() {
-			System.out.println("Pierwszy element: " + inArr[0]);
+			ThreadUtils.println("Pierwszy element: " + inArr[0]);
 			long start = System.nanoTime();
 			outArr = new Sorting().bubbleSort(inArr);
 			long stop = System.nanoTime();
-			System.out.println("Pierwszy element: " + outArr[0]);
+			ThreadUtils.println("Pierwszy element: " + outArr[0]);
 			return stop - start;
 		}
-
 	}
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
