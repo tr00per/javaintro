@@ -1,14 +1,23 @@
 package sda.code.intermediate.part3.answers.concurrency;
 
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+import sda.code.intermediate.part3.ThreadUtils;
 
 public class Access04 {
 
-	private static AtomicLong accumulator = new AtomicLong(0L);
+	private static long accumulator = 0L;
+	private static Lock lock = new ReentrantLock();
 
 	private static void add() {
-		accumulator.incrementAndGet();
-		System.err.println(accumulator);
+		try {
+			lock.lock();
+			accumulator += 1L;
+			ThreadUtils.println(accumulator);
+		} finally {
+			lock.unlock();
+		}
 	}
 
 	public static void main(String[] args) throws InterruptedException {

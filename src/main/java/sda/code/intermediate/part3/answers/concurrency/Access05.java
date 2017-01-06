@@ -1,13 +1,15 @@
 package sda.code.intermediate.part3.answers.concurrency;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 import sda.code.intermediate.part3.ThreadUtils;
 
-public class Access03 {
+public class Access05 {
 
-	private static volatile long accumulator = 0L;
+	private static AtomicLong accumulator = new AtomicLong(0L);
 
 	private static void add() {
-		accumulator += 1L;
+		accumulator.incrementAndGet();
 		ThreadUtils.println(accumulator);
 	}
 

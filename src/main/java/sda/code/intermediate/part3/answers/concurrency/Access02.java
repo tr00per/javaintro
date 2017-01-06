@@ -1,12 +1,14 @@
 package sda.code.intermediate.part3.answers.concurrency;
 
+import sda.code.intermediate.part3.ThreadUtils;
+
 public class Access02 {
 
 	private static long accumulator = 0L;
 
 	private static synchronized void add() {
 		accumulator += 1L;
-		System.err.println(accumulator);
+		ThreadUtils.println(accumulator);
 	}
 
 	public static void main(String[] args) throws InterruptedException {
