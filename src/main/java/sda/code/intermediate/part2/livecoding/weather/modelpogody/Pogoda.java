@@ -2,6 +2,7 @@
 package sda.code.intermediate.part2.livecoding.weather.modelpogody;
 
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

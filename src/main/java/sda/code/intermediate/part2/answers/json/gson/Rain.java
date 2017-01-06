@@ -1,11 +1,12 @@
 
 package sda.code.intermediate.part2.answers.json.gson;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 public class Rain {
 
