@@ -18,9 +18,9 @@ import sda.code.intermediate.part3.ThreadUtils;
 public class Reactive {
 
 	public static void main(String[] args) throws IOException {
-		final String endpoint = Settings.CONFIG.getString("weather.endpoint");
+		final String baseUrl = Settings.CONFIG.getString("weather.baseurl");
 		final String key = Settings.CONFIG.getString("weather.apikey");
-		final OpenWeatherService service = createWeatherService(endpoint);
+		final OpenWeatherService service = createWeatherService(baseUrl);
 
 		CurrentWeather weather = new CurrentWeather(service, key);
 		weather.byCity(new CityQuery("Lodz", Countries.POLAND))

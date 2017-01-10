@@ -19,7 +19,7 @@ public class WeatherApp {
 
 		WeatherClient client = WeatherClientStrategy.getClient("sync");
 
-		for (int i = 0; i < 10; ++i) {
+		for (int i = 0; i < 5; ++i) {
 			CompletableFuture<String> forecast = client.getWeather(endpoint, apiKey, coords);
 			forecast.whenComplete(WeatherApp::convertAndDisplay);
 		}
