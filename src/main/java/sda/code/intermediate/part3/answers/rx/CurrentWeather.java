@@ -29,7 +29,7 @@ public class CurrentWeather {
 		final Map<String, String> params = new HashMap<>();
 		params.put("appid", key);
 		params.put("lat", geoQuery.getLatitude());
-		params.put("log", geoQuery.getLongitude());
+		params.put("lon", geoQuery.getLongitude());
 		return service.currentWeather(params);
 		// return service.currentWeather(key, geoQuery.getLatitude(),
 		// geoQuery.getLongitude());

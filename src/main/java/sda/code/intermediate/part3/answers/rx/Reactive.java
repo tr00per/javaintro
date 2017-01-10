@@ -1,9 +1,12 @@
 package sda.code.intermediate.part3.answers.rx;
 
+import java.io.IOException;
+
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observer;
+import rx.schedulers.Schedulers;
 import sda.code.intermediate.part1.answers.patterns.Settings;
 import sda.code.intermediate.part2.answers.json.gson.WeatherDetails;
 import sda.code.intermediate.part2.answers.json.gson.WeatherGson;
@@ -14,20 +17,26 @@ import sda.code.intermediate.part3.ThreadUtils;
 
 public class Reactive {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		final String endpoint = Settings.CONFIG.getString("weather.endpoint");
 		final String key = Settings.CONFIG.getString("weather.apikey");
-		final OpenWeatherService service = createWeatherService();
+		final OpenWeatherService service = createWeatherService(endpoint);
 
 		CurrentWeather weather = new CurrentWeather(service, key);
-		weather.byCity(new CityQuery("Lodz", Countries.POLAND))// .observeOn(Schedulers.io())
+		weather.byCity(new CityQuery("Lodz", Countries.POLAND))
+//				.observeOn(Schedulers.io())
+//				.subscribeOn(Schedulers.computation())
 				.subscribe(new WeatherObserver());
-		weather.byGeoQuery(new GeoQuery(43.95, 4.81))// .observeOn(Schedulers.io())
+		weather.byGeoQuery(new GeoQuery(43.95, 4.81))
+//				.observeOn(Schedulers.io())
+//				.subscribeOn(Schedulers.computation())
 				.subscribe(new WeatherObserver());
+
+//		System.in.read();
 	}
 
-	private static OpenWeatherService createWeatherService() {
-		Retrofit retrofit = new Retrofit.Builder().baseUrl("http://api.openweathermap.org/")
-				.addConverterFactory(GsonConverterFactory.create())
+	private static OpenWeatherService createWeatherService(String endpoint) {
+		Retrofit retrofit = new Retrofit.Builder().baseUrl(endpoint).addConverterFactory(GsonConverterFactory.create())
 				.addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build();
 
 		return retrofit.create(OpenWeatherService.class);
