@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Weather_ {
+public class WeatherDetails {
 
     @SerializedName("id")
     @Expose
@@ -110,10 +110,10 @@ public class Weather_ {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Weather_) == false) {
+        if ((other instanceof WeatherDetails) == false) {
             return false;
         }
-        Weather_ rhs = ((Weather_) other);
+        WeatherDetails rhs = ((WeatherDetails) other);
         return new EqualsBuilder().append(id, rhs.id).append(main, rhs.main).append(description, rhs.description).append(icon, rhs.icon).isEquals();
     }
 

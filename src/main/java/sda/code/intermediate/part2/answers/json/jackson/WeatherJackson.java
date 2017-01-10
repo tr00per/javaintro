@@ -37,7 +37,7 @@ public class WeatherJackson {
     @JsonProperty("sys")
     private Sys sys;
     @JsonProperty("weather")
-    private List<Weather_> weather = null;
+    private List<WeatherDetails> weather = null;
     @JsonProperty("main")
     private Main main;
     @JsonProperty("wind")
@@ -103,7 +103,7 @@ public class WeatherJackson {
      *     The weather
      */
     @JsonProperty("weather")
-    public List<Weather_> getWeather() {
+    public List<WeatherDetails> getWeather() {
         return weather;
     }
 
@@ -113,7 +113,7 @@ public class WeatherJackson {
      *     The weather
      */
     @JsonProperty("weather")
-    public void setWeather(List<Weather_> weather) {
+    public void setWeather(List<WeatherDetails> weather) {
         this.weather = weather;
     }
 
