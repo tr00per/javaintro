@@ -43,7 +43,6 @@ public class Reactive {
 	}
 
 	private static class WeatherObserver implements Observer<WeatherGson> {
-
 		@Override
 		public void onCompleted() {
 			ThreadUtils.println("Completed!");
@@ -73,7 +72,6 @@ public class Reactive {
 				System.out.println(weather.getMain().getTemp());
 			}
 		}
-
 	}
 
 }
