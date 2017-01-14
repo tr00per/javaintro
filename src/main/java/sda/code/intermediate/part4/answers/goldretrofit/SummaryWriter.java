@@ -1,9 +1,6 @@
 package sda.code.intermediate.part4.answers.goldretrofit;
 
-import static sda.code.intermediate.part4.answers.goldretrofit.Messages.FAILED_SAVING_SUMMARY;
-import static sda.code.intermediate.part4.answers.goldretrofit.Messages.SUCCESSFUL_SUMMARY_SAVE;
-import static sda.code.intermediate.part4.answers.goldretrofit.Messages.WARNING_NOTICE;
-import static sda.code.intermediate.part4.answers.goldretrofit.Messages.fmt;
+import static sda.code.intermediate.part4.answers.goldretrofit.Messages.*;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -14,30 +11,38 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import sda.code.intermediate.part4.answers.goldmodel.GoldPrice;
 
 public class SummaryWriter {
 
 	private File summaryFile;
-	private CellStyle dateStyle;
 
 	public SummaryWriter(String summaryLocation) {
 		this.summaryFile = new File(summaryLocation);
 	}
 
 	public void write(List<GoldPrice> prices, String recommendation) {
-		try (Workbook wb = new HSSFWorkbook(); OutputStream sout = new FileOutputStream(summaryFile)) {
-			Sheet sheet = wb.createSheet();
-			dateStyle = createDateStyle(wb);
-			fillSheet(sheet, prices, recommendation);
+		try (Workbook wb = new XSSFWorkbook(); OutputStream sout = new FileOutputStream(summaryFile)) {
+			Sheet dataSheet = putData(wb, prices, recommendation);
+			drawPlot(dataSheet);
 			wb.write(sout);
 			System.out.println(fmt(SUCCESSFUL_SUMMARY_SAVE, summaryFile.getAbsolutePath()));
 		} catch (IOException e) {
 			System.err.println(fmt(FAILED_SAVING_SUMMARY, e.getMessage()));
 		}
+	}
+
+	private void drawPlot(Sheet dataSheet) {
+		PlotDrawer.draw(dataSheet, 0, 1);
+	}
+
+	private Sheet putData(Workbook wb, List<GoldPrice> prices, String recommendation) {
+		Sheet sheet = wb.createSheet(SHEET_NAME_DATA);
+		fillSheet(sheet, prices, recommendation);
+		return sheet;
 	}
 
 	private CellStyle createDateStyle(Workbook wb) {
@@ -69,14 +74,17 @@ public class SummaryWriter {
 
 	private void fillSinglePrice(Sheet sheet, int rownum, GoldPrice price) {
 		Row row = sheet.createRow(rownum);
+
 		Cell date = row.createCell(0);
 		date.setCellValue(toDate(price.getDate()));
+		CellStyle dateStyle = createDateStyle(row.getSheet().getWorkbook());
 		date.setCellStyle(dateStyle);
+
 		Cell value = row.createCell(1);
 		value.setCellValue(price.getPrice());
 	}
 
-	private static Date toDate(LocalDate localDate) {
+	static Date toDate(LocalDate localDate) {
 		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 

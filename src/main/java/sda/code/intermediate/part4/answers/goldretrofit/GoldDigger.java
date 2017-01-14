@@ -19,7 +19,7 @@ import sda.code.intermediate.part4.answers.goldmodel.GoldPrice;
 public class GoldDigger {
 	private static final double THRESHOLD_SELL = 1.01;
 	private static final double THRESHOLD_BUY = 0.99;
-	private static final int SHORT_PERIOD_IN_DAYS = 3;
+	static final int SHORT_PERIOD_IN_DAYS = 3;
 
 	private final GoldService service;
 	private final SummaryWriter summary;
@@ -90,11 +90,11 @@ public class GoldDigger {
 			return RECOMMEND_HOLD;
 	}
 
-	private static OptionalDouble average(List<GoldPrice> prices) {
+	static OptionalDouble average(List<GoldPrice> prices) {
 		return prices.stream().mapToDouble(x -> x.getPrice()).average();
 	}
 
-	private static OptionalDouble averageRecent(List<GoldPrice> prices) {
+	static OptionalDouble averageRecent(List<GoldPrice> prices) {
 		if (prices.size() >= SHORT_PERIOD_IN_DAYS) {
 			return prices.subList(prices.size() - SHORT_PERIOD_IN_DAYS, prices.size()).stream()
 					.mapToDouble(x -> x.getPrice()).average();
@@ -103,7 +103,7 @@ public class GoldDigger {
 		}
 	}
 
-	private static String avgToString(OptionalDouble avg) {
+	static String avgToString(OptionalDouble avg) {
 		if (avg.isPresent()) {
 			BigDecimal val = new BigDecimal(avg.getAsDouble(), MathContext.DECIMAL32);
 			return val.stripTrailingZeros().toPlainString();
@@ -112,7 +112,7 @@ public class GoldDigger {
 		}
 	}
 
-	private static void validateInput(int days) {
+	static void validateInput(int days) {
 		if (days > GoldService.LONGEST_PERIOD_IN_DAYS) {
 			throw new IllegalArgumentException(fmt(ERROR_TOO_LARGE, days, GoldService.LONGEST_PERIOD_IN_DAYS));
 		}

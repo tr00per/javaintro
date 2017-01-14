@@ -21,6 +21,14 @@ public class GoldPrice {
 	@Expose
 	private Double price;
 
+	public GoldPrice() {
+	}
+
+	public GoldPrice(LocalDate date, Double price) {
+		this.date = date;
+		this.price = price;
+	}
+
 	public LocalDate getDate() {
 		return date;
 	}

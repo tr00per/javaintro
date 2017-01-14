@@ -17,6 +17,8 @@ public class Messages {
 	static final String RECOMMEND_HOLD = "HOLD";
 	static final String FAILED_SAVING_SUMMARY = "Failed to save the summary file: %s";
 	static final String SUCCESSFUL_SUMMARY_SAVE = "Saved summary at: %s";
+	static final String SHEET_NAME_DATA = "Data";
+	static final String SHEET_NAME_PLOT = "Plot";
 
 	public static String fmt(String format, Object... objects) {
 		return String.format(format, objects);

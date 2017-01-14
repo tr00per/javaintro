@@ -12,7 +12,7 @@ public class Main {
 	private static final int DEAFULT_NUMBER_OF_DAYS = 90;
 
 	public static void main(String[] args) {
-		File summary = Paths.get(System.getProperty("user.home"), "data", "gold_summary.xls").toFile();
+		File summary = Paths.get(System.getProperty("user.home"), "data", "gold_summary.xlsx").toFile();
 		GoldDigger digger = new GoldDigger("http://api.nbp.pl/api/", summary.getAbsolutePath());
 
 		try (Scanner inp = new Scanner(System.in)) {
