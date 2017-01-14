@@ -15,16 +15,14 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 
 import sda.code.intermediate.part4.answers.goldmodel.GoldPrice;
 
 public class SummaryWriter {
 
 	private File summaryFile;
+	private CellStyle dateStyle;
 
 	public SummaryWriter(String summaryLocation) {
 		this.summaryFile = new File(summaryLocation);
@@ -33,6 +31,7 @@ public class SummaryWriter {
 	public void write(List<GoldPrice> prices, String recommendation) {
 		try (Workbook wb = new HSSFWorkbook(); OutputStream sout = new FileOutputStream(summaryFile)) {
 			Sheet sheet = wb.createSheet();
+			dateStyle = createDateStyle(wb);
 			fillSheet(sheet, prices, recommendation);
 			wb.write(sout);
 			System.out.println(fmt(SUCCESSFUL_SUMMARY_SAVE, summaryFile.getAbsolutePath()));
@@ -41,15 +40,22 @@ public class SummaryWriter {
 		}
 	}
 
+	private CellStyle createDateStyle(Workbook wb) {
+		CellStyle cellStyle = wb.createCellStyle();
+		cellStyle.setDataFormat(wb.getCreationHelper().createDataFormat().getFormat("yyyy-mm-dd"));
+		return cellStyle;
+	}
+
 	private void fillSheet(Sheet sheet, List<GoldPrice> prices, String recommendation) {
 		fillPrices(sheet, prices);
 
 		Cell avg = sheet.getRow(0).createCell(3);
-		Cell recom = sheet.getRow(0).createCell(4);
-		Cell notice = sheet.getRow(2).createCell(3);
-
 		avg.setCellFormula("AVERAGE(B1:B" + prices.size() + ")");
+
+		Cell recom = sheet.getRow(0).createCell(4);
 		recom.setCellValue(recommendation);
+
+		Cell notice = sheet.getRow(2).createCell(3);
 		notice.setCellValue(WARNING_NOTICE);
 	}
 
@@ -58,12 +64,14 @@ public class SummaryWriter {
 		for (GoldPrice price : prices) {
 			fillSinglePrice(sheet, rownum++, price);
 		}
+		sheet.autoSizeColumn(0);
 	}
 
 	private void fillSinglePrice(Sheet sheet, int rownum, GoldPrice price) {
 		Row row = sheet.createRow(rownum);
 		Cell date = row.createCell(0);
 		date.setCellValue(toDate(price.getDate()));
+		date.setCellStyle(dateStyle);
 		Cell value = row.createCell(1);
 		value.setCellValue(price.getPrice());
 	}
