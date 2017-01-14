@@ -5,6 +5,7 @@ import static sda.code.intermediate.part4.answers.goldretrofit.Messages.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.OptionalDouble;
 import java.util.function.BiConsumer;
@@ -16,8 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import sda.code.intermediate.part4.answers.goldmodel.GoldPrice;
 
 public class GoldDigger {
-	private static final double THRESHOLD_SELL = 1.05;
-	private static final double THRESHOLD_BUY = 0.95;
+	private static final double THRESHOLD_SELL = 1.01;
+	private static final double THRESHOLD_BUY = 0.99;
 	private static final int SHORT_PERIOD_IN_DAYS = 3;
 
 	private final GoldService service;
@@ -38,12 +39,18 @@ public class GoldDigger {
 
 		System.out.println(WARNING_NOTICE);
 
-		Call<List<GoldPrice>> call = service.byDays(days);
+		Call<List<GoldPrice>> call = newCallByDays(days);
 		try {
 			runCall(call, summary::write);
 		} catch (IOException e) {
 			System.err.println(fmt(FAILED_RETRIVAL, e.getMessage()));
 		}
+	}
+
+	private Call<List<GoldPrice>> newCallByDays(int days) {
+		LocalDate to = LocalDate.now();
+		LocalDate from = to.minusDays(days);
+		return service.byDates(from.format(GoldService.DATE_FORMAT), to.format(GoldService.DATE_FORMAT));
 	}
 
 	private void runCall(Call<List<GoldPrice>> call, BiConsumer<List<GoldPrice>, String> next) throws IOException {
