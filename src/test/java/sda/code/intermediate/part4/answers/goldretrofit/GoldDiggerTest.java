@@ -13,6 +13,24 @@ import sda.code.intermediate.part4.answers.goldmodel.GoldPrice;
 public class GoldDiggerTest {
 
 	@Test
+	public void recoomendationHold() {
+		assertEquals(GoldDigger.ratioToRecommendation(OptionalDouble.of(1.0), OptionalDouble.of(1.0)),
+				Messages.RECOMMEND_HOLD);
+	}
+
+	@Test
+	public void recoomendationFailAvgAll() {
+		assertEquals(GoldDigger.ratioToRecommendation(OptionalDouble.empty(), OptionalDouble.of(1.0)),
+				Messages.FAILED_RECENT_AVG_COMPUTATION);
+	}
+
+	@Test
+	public void recoomendationFailAvgRecent() {
+		assertEquals(GoldDigger.ratioToRecommendation(OptionalDouble.of(1.0), OptionalDouble.empty()),
+				Messages.FAILED_AVG_COMPUTATION);
+	}
+
+	@Test
 	public void testAverage() {
 		List<GoldPrice> prices = new ArrayList<>(3);
 		prices.add(new GoldPrice(null, 1.0));
@@ -71,4 +89,5 @@ public class GoldDiggerTest {
 	public void testValidateInputALittleTooSmall() {
 		GoldDigger.validateInput(GoldDigger.SHORT_PERIOD_IN_DAYS);
 	}
+
 }

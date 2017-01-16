@@ -73,7 +73,7 @@ public class GoldDigger {
 		next.accept(prices, recommendation);
 	}
 
-	private String ratioToRecommendation(OptionalDouble avgRecent, OptionalDouble avgAll) {
+	static String ratioToRecommendation(OptionalDouble avgRecent, OptionalDouble avgAll) {
 		if (!avgAll.isPresent()) {
 			return FAILED_AVG_COMPUTATION;
 		}

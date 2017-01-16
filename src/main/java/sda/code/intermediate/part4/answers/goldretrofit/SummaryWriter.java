@@ -6,9 +6,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.*;
@@ -76,16 +73,12 @@ public class SummaryWriter {
 		Row row = sheet.createRow(rownum);
 
 		Cell date = row.createCell(0);
-		date.setCellValue(toDate(price.getDate()));
-		CellStyle dateStyle = createDateStyle(row.getSheet().getWorkbook());
+		date.setCellValue(DateUtils.toDate(price.getDate()));
+		CellStyle dateStyle = createDateStyle(sheet.getWorkbook());
 		date.setCellStyle(dateStyle);
 
 		Cell value = row.createCell(1);
 		value.setCellValue(price.getPrice());
-	}
-
-	static Date toDate(LocalDate localDate) {
-		return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 
 }
