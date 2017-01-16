@@ -5,11 +5,11 @@ import java.util.function.Consumer;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class World {
+public class World implements GameWorld {
 
 	private final int width;
 	private final int height;
-	private final Entity[] universe;
+	private final GameEntity[] universe;
 
 	public World(int width, int height, Filler filler) {
 		this.width = width;
@@ -17,24 +17,34 @@ public class World {
 		universe = fillUniverse(filler);
 	}
 
-	private World(Entity[] universe, int width, int height) {
+	private World(GameEntity[] universe, int width, int height) {
 		this.width = width;
 		this.height = height;
 		this.universe = universe;
 	}
 
-	public World step(Filler stepFiller) {
-		final Entity[] bigBang = fillUniverse(stepFiller);
+	@Override
+	public GameWorld step(Filler stepFiller) {
+		final GameEntity[] bigBang = fillUniverse(stepFiller);
 		return new World(bigBang, width, height);
 	}
 
-	public void forEach(Consumer<Entity> entityEnjoyer) {
+	@Override
+	public void forEach(Consumer<GameEntity> entityEnjoyer) {
 		Stream.of(universe).forEach(entityEnjoyer);
 	}
 
-	private Entity[] fillUniverse(Filler filler) {
-		return (Entity[]) IntStream.range(0, width * height)
-				.mapToObj(idx -> filler.fill(this, idx % width, idx / width)).toArray(Entity[]::new);
+	@Override
+	public GameEntity get(int x, int y) {
+		if (x < 0 || x >= width || y < 0 || y >= height) {
+			return Entity.dead();
+		}
+		return universe[y * width + x];
+	}
+
+	private GameEntity[] fillUniverse(Filler filler) {
+		return (GameEntity[]) IntStream.range(0, width * height)
+				.mapToObj(idx -> filler.fill(this, idx % width, idx / width)).toArray(GameEntity[]::new);
 	}
 
 	@Override

@@ -1,20 +1,22 @@
 package sda.code.intermediate.part4.answers.gameoflife;
 
-public class Entity {
+public class Entity implements GameEntity {
 	private static final Entity DEAD = new DeadEntity();
 	private static final Entity NEWBORN = new Entity(0);
 
-	int age;
+	final int age;
 
 	private Entity(int age) {
 		this.age = age;
 	}
 
+	@Override
 	public boolean isAlive() {
 		return age >= 0;
 	}
 
-	public Entity descendant() {
+	@Override
+	public GameEntity descendant() {
 		return new Entity(age + 1);
 	}
 
@@ -32,12 +34,7 @@ public class Entity {
 		}
 
 		@Override
-		public boolean isAlive() {
-			return false;
-		}
-
-		@Override
-		public Entity descendant() {
+		public GameEntity descendant() {
 			throw new IllegalStateException("Dead entities cannot have descendants");
 		}
 	}

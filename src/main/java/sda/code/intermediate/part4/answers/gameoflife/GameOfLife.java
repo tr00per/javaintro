@@ -2,8 +2,8 @@ package sda.code.intermediate.part4.answers.gameoflife;
 
 public class GameOfLife {
 
-	private World world;
-	private World oldWorld;
+	private GameWorld world;
+	private GameWorld oldWorld;
 	private Filler stepFiller;
 	private Printer printer;
 
@@ -14,12 +14,10 @@ public class GameOfLife {
 	}
 
 	public boolean hasChanged() {
-		System.out.println("Changed: " + !world.equals(oldWorld));
 		return !world.equals(oldWorld);
 	}
 
 	public void runStep() {
-		System.out.println("Step");
 		oldWorld = world;
 		world = world.step(stepFiller);
 	}

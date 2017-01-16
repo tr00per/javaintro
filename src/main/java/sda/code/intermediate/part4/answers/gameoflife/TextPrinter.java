@@ -3,21 +3,21 @@ package sda.code.intermediate.part4.answers.gameoflife;
 public class TextPrinter implements Printer {
 
 	private final int width;
-	private final int height;
 	private int idx;
 
-	public TextPrinter(int width, int height) {
+	public TextPrinter(int width) {
 		this.width = width;
-		this.height = height;
 	}
 
 	@Override
 	public void reset() {
 		idx = 0;
+		System.out.println();
+		System.out.flush();
 	}
 
 	@Override
-	public void accept(Entity e) {
+	public void accept(GameEntity e) {
 		if (e.isAlive()) {
 			System.out.print('@');
 		} else {
@@ -25,9 +25,6 @@ public class TextPrinter implements Printer {
 		}
 		idx += 1;
 		if (idx % width == 0) {
-			System.out.println();
-		}
-		if (idx == width * height) {
 			System.out.println();
 		}
 	}
