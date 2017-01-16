@@ -1,5 +1,6 @@
 package sda.code.intermediate.part4.answers.gameoflife;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 
 public interface GameWorld {
@@ -8,6 +9,6 @@ public interface GameWorld {
 
 	void forEach(Consumer<GameEntity> entityEnjoyer);
 
-	GameEntity get(int x, int y);
+	Optional<GameEntity> get(int x, int y);
 
 }

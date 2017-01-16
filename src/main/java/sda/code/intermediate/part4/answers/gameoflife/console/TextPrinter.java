@@ -1,4 +1,7 @@
-package sda.code.intermediate.part4.answers.gameoflife;
+package sda.code.intermediate.part4.answers.gameoflife.console;
+
+import sda.code.intermediate.part4.answers.gameoflife.GameEntity;
+import sda.code.intermediate.part4.answers.gameoflife.Printer;
 
 public class TextPrinter implements Printer {
 

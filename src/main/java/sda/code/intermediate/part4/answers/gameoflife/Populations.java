@@ -1,29 +1,36 @@
 package sda.code.intermediate.part4.answers.gameoflife;
 
+import java.util.Optional;
 import java.util.Random;
 
 public class Populations {
 	private static Random rng = new Random();
 
-	public static Filler randomPopulation(double newbornRatio) {
-		return (w, x, y) -> rng.nextDouble() < newbornRatio ? Entity.newborn() : Entity.dead();
+	private GameEntityFactory entityFactory;
+
+	public Populations(GameEntityFactory entityFactory) {
+		this.entityFactory = entityFactory;
 	}
 
-	public static Filler classic() {
+	public Filler randomPopulation(double newbornRatio) {
+		return (w, x, y) -> rng.nextDouble() < newbornRatio ? entityFactory.newborn() : entityFactory.dead();
+	}
+
+	public Filler classic() {
 		return (w, x, y) -> {
 			final int neighbours = countNeighbours(w, x, y);
-			final GameEntity current = w.get(x, y);
-			if (current.isAlive()) {
+			final Optional<GameEntity> current = w.get(x, y);
+			if (current.isPresent() && current.get().isAlive()) {
 				if (neighbours == 2 || neighbours == 3) {
-					return current.descendant();
+					return current.get().descendant();
 				} else {
-					return Entity.dead();
+					return entityFactory.dead();
 				}
 			} else {
 				if (neighbours == 3) {
-					return Entity.newborn();
+					return entityFactory.newborn();
 				} else {
-					return Entity.dead();
+					return entityFactory.dead();
 				}
 			}
 		};
@@ -36,7 +43,8 @@ public class Populations {
 				if (dx == 0 && dy == 0) {
 					continue;
 				}
-				if (w.get(x + dx, y + dy).isAlive()) {
+				final Optional<GameEntity> neighbour = w.get(x + dx, y + dy);
+				if (neighbour.isPresent() && neighbour.get().isAlive()) {
 					count += 1;
 				}
 			}

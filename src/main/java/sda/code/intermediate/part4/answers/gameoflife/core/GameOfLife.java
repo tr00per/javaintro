@@ -1,4 +1,8 @@
-package sda.code.intermediate.part4.answers.gameoflife;
+package sda.code.intermediate.part4.answers.gameoflife.core;
+
+import sda.code.intermediate.part4.answers.gameoflife.Filler;
+import sda.code.intermediate.part4.answers.gameoflife.GameWorld;
+import sda.code.intermediate.part4.answers.gameoflife.Printer;
 
 public class GameOfLife {
 

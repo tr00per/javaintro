@@ -1,9 +1,14 @@
-package sda.code.intermediate.part4.answers.gameoflife;
+package sda.code.intermediate.part4.answers.gameoflife.core;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import sda.code.intermediate.part4.answers.gameoflife.Filler;
+import sda.code.intermediate.part4.answers.gameoflife.GameEntity;
+import sda.code.intermediate.part4.answers.gameoflife.GameWorld;
 
 public class World implements GameWorld {
 
@@ -35,11 +40,11 @@ public class World implements GameWorld {
 	}
 
 	@Override
-	public GameEntity get(int x, int y) {
+	public Optional<GameEntity> get(int x, int y) {
 		if (x < 0 || x >= width || y < 0 || y >= height) {
-			return Entity.dead();
+			return Optional.empty();
 		}
-		return universe[y * width + x];
+		return Optional.of(universe[y * width + x]);
 	}
 
 	private GameEntity[] fillUniverse(Filler filler) {
