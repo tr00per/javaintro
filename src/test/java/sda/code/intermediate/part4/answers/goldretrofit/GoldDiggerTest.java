@@ -11,8 +11,6 @@ import org.junit.Test;
 import sda.code.intermediate.part4.answers.goldmodel.GoldPrice;
 
 public class GoldDiggerTest {
-	private static final String PHONY_PATH = "";
-	private static final String PHONY_URL = "http://localhost";
 
 	@Test
 	public void testAverage() {
