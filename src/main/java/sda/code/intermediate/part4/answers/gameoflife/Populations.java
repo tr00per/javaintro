@@ -2,6 +2,7 @@ package sda.code.intermediate.part4.answers.gameoflife;
 
 import java.util.Optional;
 import java.util.Random;
+import java.util.function.Function;
 
 public class Populations {
 	private static Random rng = new Random();
@@ -12,22 +13,36 @@ public class Populations {
 		this.entityFactory = entityFactory;
 	}
 
-	public Filler randomPopulation(double newbornRatio) {
+	public Filler random(double newbornRatio) {
 		return (w, x, y) -> rng.nextDouble() < newbornRatio ? entityFactory.newborn() : entityFactory.dead();
 	}
 
 	public Filler classic() {
+		return cellularAutomaton(ns -> ns == 3, ns -> ns == 2 || ns == 3);
+	}
+
+	public Filler highlife() {
+		return cellularAutomaton(ns -> ns == 3 || ns == 6, ns -> ns == 2 || ns == 3);
+	}
+
+	public Filler dayAndNight() {
+		return cellularAutomaton(ns -> ns == 3 || ns == 6 || ns == 7 || ns == 8,
+				ns -> ns == 3 || ns == 4 || ns == 6 || ns == 7 || ns == 8);
+	}
+
+	private Filler cellularAutomaton(Function<Integer, Boolean> shouldBeBorn,
+			Function<Integer, Boolean> shouldSurvive) {
 		return (w, x, y) -> {
-			final int neighbours = countNeighbours(w, x, y);
+			final int neighbours = countMooreNeighbours(w, x, y);
 			final Optional<GameEntity> current = w.get(x, y);
 			if (current.isPresent() && current.get().isAlive()) {
-				if (neighbours == 2 || neighbours == 3) {
+				if (shouldSurvive.apply(neighbours)) {
 					return current.get().descendant();
 				} else {
 					return entityFactory.dead();
 				}
 			} else {
-				if (neighbours == 3) {
+				if (shouldBeBorn.apply(neighbours)) {
 					return entityFactory.newborn();
 				} else {
 					return entityFactory.dead();
@@ -36,7 +51,7 @@ public class Populations {
 		};
 	}
 
-	private static int countNeighbours(GameWorld w, int x, int y) {
+	private static int countMooreNeighbours(GameWorld w, int x, int y) {
 		int count = 0;
 		for (int dx = -1; dx <= 1; ++dx) {
 			for (int dy = -1; dy <= 1; ++dy) {

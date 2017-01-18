@@ -13,13 +13,13 @@ public class Main {
 		GameEntityFactory entityFactory = new EntityFactory();
 		Populations populations = new Populations(entityFactory);
 		System.out.println("-----------------------\n Conway's Game of Life\n-----------------------");
-		GameOfLife gol = new GameOfLife(WORLD_WIDTH, WORLD_HEIGHT, populations.randomPopulation(0.5),
-				populations.classic(), new TextPrinter(WORLD_WIDTH));
+		GameOfLife gol = new GameOfLife(WORLD_WIDTH, WORLD_HEIGHT, populations.random(0.5), populations.classic(),
+				new TextPrinter(WORLD_WIDTH));
 		int rounds = 0;
 		while (gol.hasChanged() && rounds++ < 500) {
 			gol.print();
 			gol.runStep();
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		}
 		System.out.println("Done.");
 	}
