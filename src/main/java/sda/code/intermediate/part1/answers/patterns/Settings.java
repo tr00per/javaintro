@@ -1,6 +1,6 @@
 package sda.code.intermediate.part1.answers.patterns;
 
-import sda.code.intermediate.FileUtils;
+import sda.code.intermediate.FileLoaders;
 
 import java.util.Properties;
 
@@ -10,7 +10,7 @@ public enum Settings {
     private final Properties props;
 
     private Settings() {
-        props = new FileUtils().loadDefaultProperties();
+        props = new FileLoaders().loadDefaultProperties();
     }
 
     public String getString(String name) {

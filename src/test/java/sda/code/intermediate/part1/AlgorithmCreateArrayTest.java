@@ -5,7 +5,7 @@ import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import sda.code.intermediate.SortingUtils;
+import sda.code.intermediate.SortingChecks;
 import sda.code.intermediate.part1.exercises.Algorithms;
 
 import static org.junit.Assert.assertEquals;
@@ -26,7 +26,7 @@ public class AlgorithmCreateArrayTest {
     public void testCreateRandomArray(int length) {
         int[] array = sut.createRandomArray(length);
         assertEquals(length, array.length);
-        assertFalse(new SortingUtils().isSorted(array));
+        assertFalse(new SortingChecks().isSorted(array));
     }
 
     @Test(expected = IllegalArgumentException.class)

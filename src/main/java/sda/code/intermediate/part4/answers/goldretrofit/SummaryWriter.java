@@ -72,7 +72,7 @@ public class SummaryWriter {
         Row row = sheet.createRow(rownum);
 
         Cell date = row.createCell(0);
-        date.setCellValue(DateUtils.toDate(price.getDate()));
+        date.setCellValue(DateConverts.toDate(price.getDate()));
         CellStyle dateStyle = createDateStyle(sheet.getWorkbook());
         date.setCellStyle(dateStyle);
 

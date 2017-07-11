@@ -1,6 +1,6 @@
 package sda.code.intermediate.part3.answers.concurrency;
 
-import sda.code.intermediate.part3.ThreadUtils;
+import sda.code.intermediate.part3.RichPrint;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -14,7 +14,7 @@ public class Access04 {
         try {
             lock.lock();
             accumulator += 1L;
-            ThreadUtils.println(accumulator);
+            RichPrint.println(accumulator);
         } finally {
             lock.unlock();
         }

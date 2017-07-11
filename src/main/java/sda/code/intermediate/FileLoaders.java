@@ -3,11 +3,11 @@ package sda.code.intermediate;
 import java.io.*;
 import java.util.Properties;
 
-public class FileUtils {
+public class FileLoaders {
 
     public Properties loadDefaultProperties() {
         Properties prop = new Properties();
-        InputStream config = FileUtils.class.getResourceAsStream("/default.conf");
+        InputStream config = FileLoaders.class.getResourceAsStream("/default.conf");
         try {
             prop.load(config);
         } catch (IOException e) {
@@ -17,7 +17,7 @@ public class FileUtils {
     }
 
     public static Reader getContents(String name) {
-        InputStream is = FileUtils.class.getResourceAsStream(name);
+        InputStream is = FileLoaders.class.getResourceAsStream(name);
         if (is == null) {
             throw new RuntimeException(new FileNotFoundException(name));
         }

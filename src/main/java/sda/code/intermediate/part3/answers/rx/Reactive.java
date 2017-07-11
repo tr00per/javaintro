@@ -10,7 +10,7 @@ import sda.code.intermediate.part2.answers.json.gson.WeatherGson;
 import sda.code.intermediate.part2.livecoding.weather.api.CityQuery;
 import sda.code.intermediate.part2.livecoding.weather.api.Countries;
 import sda.code.intermediate.part2.livecoding.weather.api.GeoQuery;
-import sda.code.intermediate.part3.ThreadUtils;
+import sda.code.intermediate.part3.RichPrint;
 
 import java.io.IOException;
 
@@ -44,18 +44,18 @@ public class Reactive {
     private static class WeatherObserver implements Observer<WeatherGson> {
         @Override
         public void onCompleted() {
-            ThreadUtils.println("Completed!");
+            RichPrint.println("Completed!");
         }
 
         @Override
         public void onError(Throwable e) {
-            ThreadUtils.println("Error!");
-            ThreadUtils.println(e.getMessage());
+            RichPrint.println("Error!");
+            RichPrint.println(e.getMessage());
         }
 
         @Override
         public void onNext(WeatherGson weather) {
-            ThreadUtils.println("Next!");
+            RichPrint.println("Next!");
 
             if (weather.getName() != null) {
                 System.out.println(weather.getName());

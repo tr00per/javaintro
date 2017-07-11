@@ -11,8 +11,8 @@ import static org.junit.Assert.assertTrue;
 public class SelfTest {
 
     @Test
-    public void simpleFileUtilsTest() {
-        Properties props = new FileUtils().loadDefaultProperties();
+    public void simpleFileLoadersTest() {
+        Properties props = new FileLoaders().loadDefaultProperties();
         assertTrue(Boolean.parseBoolean(props.getProperty("success")));
         assertEquals(42, Integer.parseInt(props.getProperty("answer")));
         assertEquals("World", props.getProperty("hello.msg"));
@@ -20,9 +20,9 @@ public class SelfTest {
     }
 
     @Test
-    public void simpleSortingUtilsTest() {
+    public void simpleSortingChecksTest() {
         int[] array = new int[]{1, 2, 3, 4, 5, 6, 7, 9, 0};
         Arrays.sort(array);
-        assertTrue(new SortingUtils().isSorted(array));
+        assertTrue(new SortingChecks().isSorted(array));
     }
 }

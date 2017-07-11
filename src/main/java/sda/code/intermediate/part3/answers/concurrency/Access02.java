@@ -1,6 +1,6 @@
 package sda.code.intermediate.part3.answers.concurrency;
 
-import sda.code.intermediate.part3.ThreadUtils;
+import sda.code.intermediate.part3.RichPrint;
 
 public class Access02 {
 
@@ -8,7 +8,7 @@ public class Access02 {
 
     private static synchronized void add() {
         accumulator += 1L;
-        ThreadUtils.println(accumulator);
+        RichPrint.println(accumulator);
     }
 
     public static void main(String[] args) throws InterruptedException {

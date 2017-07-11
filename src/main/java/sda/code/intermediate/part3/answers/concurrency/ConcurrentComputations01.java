@@ -2,7 +2,7 @@ package sda.code.intermediate.part3.answers.concurrency;
 
 import sda.code.intermediate.part1.answers.Algorithms;
 import sda.code.intermediate.part1.answers.Sorting;
-import sda.code.intermediate.part3.ThreadUtils;
+import sda.code.intermediate.part3.RichPrint;
 
 import java.util.concurrent.*;
 
@@ -14,11 +14,11 @@ public class ConcurrentComputations01 {
 
         @Override
         public Long call() {
-            ThreadUtils.println("Pierwszy element: " + inArr[0]);
+            RichPrint.println("Pierwszy element: " + inArr[0]);
             long start = System.nanoTime();
             outArr = new Sorting().bubbleSort(inArr);
             long stop = System.nanoTime();
-            ThreadUtils.println("Pierwszy element: " + outArr[0]);
+            RichPrint.println("Pierwszy element: " + outArr[0]);
             return stop - start;
         }
     }

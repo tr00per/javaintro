@@ -5,7 +5,7 @@ import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import sda.code.intermediate.SortingUtils;
+import sda.code.intermediate.SortingChecks;
 import sda.code.intermediate.part1.exercises.Algorithms;
 import sda.code.intermediate.part1.exercises.Sorting;
 import sda.code.intermediate.part1.exercises.data.Person;
@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class SortingTest {
 
     private Sorting sut;
-    private SortingUtils check;
+    private SortingChecks check;
     private Algorithms algo;
 
     private int[] evenIntArray;
@@ -35,7 +35,7 @@ public class SortingTest {
     @Before
     public void setUp() throws Exception {
         sut = new Sorting();
-        check = new SortingUtils();
+        check = new SortingChecks();
         algo = new Algorithms();
         evenIntArray = algo.createRandomArray(1000);
         oddIntArray = algo.createRandomArray(1001);

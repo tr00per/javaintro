@@ -1,6 +1,6 @@
 package sda.code.intermediate.part3.answers.concurrency;
 
-import sda.code.intermediate.part3.ThreadUtils;
+import sda.code.intermediate.part3.RichPrint;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
@@ -19,16 +19,16 @@ public class Queue01 {
             try {
                 print(++counter);
             } catch (InterruptedException e) {
-                ThreadUtils.println("Interrupted");
+                RichPrint.println("Interrupted");
                 break;
             }
         }
-        ThreadUtils.println("Running: " + running.get());
+        RichPrint.println("Running: " + running.get());
     }
 
     private static void print(int counter) throws InterruptedException {
         final Integer item = queue.take();
-        ThreadUtils.println(++counter + ": " + item);
+        RichPrint.println(++counter + ": " + item);
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -40,7 +40,7 @@ public class Queue01 {
         for (int i = 0; i < 20; ++i) {
             final int v = i;
             producers.submit(() -> {
-                ThreadUtils.println(v);
+                RichPrint.println(v);
                 queue.add(v);
             });
         }

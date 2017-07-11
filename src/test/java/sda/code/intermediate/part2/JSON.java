@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
-import sda.code.intermediate.FileUtils;
+import sda.code.intermediate.FileLoaders;
 import sda.code.intermediate.part2.answers.json.gson.WeatherGson;
 import sda.code.intermediate.part2.answers.json.jackson.WeatherJackson;
 
@@ -42,7 +42,7 @@ public class JSON {
 
     @Test
     public void deserializeFileUsingGson() {
-        Reader input = FileUtils.getContents("/model.json");
+        Reader input = FileLoaders.getContents("/model.json");
         WeatherGson weather = gson.fromJson(input, WeatherGson.class);
         System.out.println(weather.toString());
     }
@@ -71,7 +71,7 @@ public class JSON {
 
     @Test
     public void deserializeFileUsingJackson() {
-        Reader input = FileUtils.getContents("/model.json");
+        Reader input = FileLoaders.getContents("/model.json");
         WeatherJackson weather = null;
         try {
             weather = jackson.readValue(input, WeatherJackson.class);

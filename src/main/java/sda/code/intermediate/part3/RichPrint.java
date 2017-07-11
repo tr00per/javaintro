@@ -1,6 +1,6 @@
 package sda.code.intermediate.part3;
 
-public class ThreadUtils {
+public class RichPrint {
 
     public static void println(String msg) {
         System.err.println(Thread.currentThread().getName() + ": " + msg);

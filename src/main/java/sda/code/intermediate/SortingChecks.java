@@ -2,7 +2,7 @@ package sda.code.intermediate;
 
 import java.util.Comparator;
 
-public class SortingUtils {
+public class SortingChecks {
 
     public boolean isSorted(int array[]) {
         if (array == null) {

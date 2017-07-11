@@ -1,6 +1,6 @@
 package sda.code.intermediate.part1;
 
-import sda.code.intermediate.SortingUtils;
+import sda.code.intermediate.SortingChecks;
 import sda.code.intermediate.part1.exercises.Algorithms;
 import sda.code.intermediate.part1.exercises.Sorting;
 
@@ -37,7 +37,7 @@ public class RuntimeDemo {
             long start = System.nanoTime();
             outArr = sorter.apply(inArr);
             long stop = System.nanoTime();
-            Boolean sorted = new SortingUtils().isSorted(outArr);
+            Boolean sorted = new SortingChecks().isSorted(outArr);
             System.out.println("Array sorted? " + sorted);
             System.out.println("Time spend: " + (stop - start) / 1000000L);
         }

@@ -1,6 +1,6 @@
 package sda.code.intermediate.part3.answers.concurrency;
 
-import sda.code.intermediate.part3.ThreadUtils;
+import sda.code.intermediate.part3.RichPrint;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -10,7 +10,7 @@ public class Access05 {
 
     private static void add() {
         accumulator.incrementAndGet();
-        ThreadUtils.println(accumulator);
+        RichPrint.println(accumulator);
     }
 
     public static void main(String[] args) throws InterruptedException {
