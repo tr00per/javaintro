@@ -19,3 +19,7 @@ target/
 
 # Credentials
 *.secret
+
+# Idea
+.idea
+*.iml
