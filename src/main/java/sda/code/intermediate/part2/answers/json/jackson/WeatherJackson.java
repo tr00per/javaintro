@@ -1,34 +1,27 @@
-
 package sda.code.intermediate.part2.answers.json.jackson;
+
+import com.fasterxml.jackson.annotation.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "coord",
-    "sys",
-    "weather",
-    "main",
-    "wind",
-    "rain",
-    "clouds",
-    "dt",
-    "id",
-    "name",
-    "cod"
+        "coord",
+        "sys",
+        "weather",
+        "main",
+        "wind",
+        "rain",
+        "clouds",
+        "dt",
+        "id",
+        "name",
+        "cod"
 })
 public class WeatherJackson {
 
@@ -58,9 +51,7 @@ public class WeatherJackson {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The coord
+     * @return The coord
      */
     @JsonProperty("coord")
     public Coord getCoord() {
@@ -68,9 +59,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param coord
-     *     The coord
+     * @param coord The coord
      */
     @JsonProperty("coord")
     public void setCoord(Coord coord) {
@@ -78,9 +67,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The sys
+     * @return The sys
      */
     @JsonProperty("sys")
     public Sys getSys() {
@@ -88,9 +75,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param sys
-     *     The sys
+     * @param sys The sys
      */
     @JsonProperty("sys")
     public void setSys(Sys sys) {
@@ -98,9 +83,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The weather
+     * @return The weather
      */
     @JsonProperty("weather")
     public List<WeatherDetails> getWeather() {
@@ -108,9 +91,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param weather
-     *     The weather
+     * @param weather The weather
      */
     @JsonProperty("weather")
     public void setWeather(List<WeatherDetails> weather) {
@@ -118,9 +99,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The main
+     * @return The main
      */
     @JsonProperty("main")
     public Main getMain() {
@@ -128,9 +107,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param main
-     *     The main
+     * @param main The main
      */
     @JsonProperty("main")
     public void setMain(Main main) {
@@ -138,9 +115,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The wind
+     * @return The wind
      */
     @JsonProperty("wind")
     public Wind getWind() {
@@ -148,9 +123,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param wind
-     *     The wind
+     * @param wind The wind
      */
     @JsonProperty("wind")
     public void setWind(Wind wind) {
@@ -158,9 +131,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The rain
+     * @return The rain
      */
     @JsonProperty("rain")
     public Rain getRain() {
@@ -168,9 +139,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param rain
-     *     The rain
+     * @param rain The rain
      */
     @JsonProperty("rain")
     public void setRain(Rain rain) {
@@ -178,9 +147,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The clouds
+     * @return The clouds
      */
     @JsonProperty("clouds")
     public Clouds getClouds() {
@@ -188,9 +155,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param clouds
-     *     The clouds
+     * @param clouds The clouds
      */
     @JsonProperty("clouds")
     public void setClouds(Clouds clouds) {
@@ -198,9 +163,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The dt
+     * @return The dt
      */
     @JsonProperty("dt")
     public Integer getDt() {
@@ -208,9 +171,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param dt
-     *     The dt
+     * @param dt The dt
      */
     @JsonProperty("dt")
     public void setDt(Integer dt) {
@@ -218,9 +179,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The id
+     * @return The id
      */
     @JsonProperty("id")
     public Integer getId() {
@@ -228,9 +187,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param id
-     *     The id
+     * @param id The id
      */
     @JsonProperty("id")
     public void setId(Integer id) {
@@ -238,9 +195,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The name
+     * @return The name
      */
     @JsonProperty("name")
     public String getName() {
@@ -248,9 +203,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param name
-     *     The name
+     * @param name The name
      */
     @JsonProperty("name")
     public void setName(String name) {
@@ -258,9 +211,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @return
-     *     The cod
+     * @return The cod
      */
     @JsonProperty("cod")
     public Integer getCod() {
@@ -268,9 +219,7 @@ public class WeatherJackson {
     }
 
     /**
-     * 
-     * @param cod
-     *     The cod
+     * @param cod The cod
      */
     @JsonProperty("cod")
     public void setCod(Integer cod) {

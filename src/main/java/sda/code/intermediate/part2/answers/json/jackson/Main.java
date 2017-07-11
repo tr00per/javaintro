@@ -1,27 +1,20 @@
-
 package sda.code.intermediate.part2.answers.json.jackson;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "temp",
-    "humidity",
-    "pressure",
-    "temp_min",
-    "temp_max"
+        "temp",
+        "humidity",
+        "pressure",
+        "temp_min",
+        "temp_max"
 })
 public class Main {
 
@@ -39,9 +32,7 @@ public class Main {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The temp
+     * @return The temp
      */
     @JsonProperty("temp")
     public Double getTemp() {
@@ -49,9 +40,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @param temp
-     *     The temp
+     * @param temp The temp
      */
     @JsonProperty("temp")
     public void setTemp(Double temp) {
@@ -59,9 +48,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @return
-     *     The humidity
+     * @return The humidity
      */
     @JsonProperty("humidity")
     public Integer getHumidity() {
@@ -69,9 +56,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @param humidity
-     *     The humidity
+     * @param humidity The humidity
      */
     @JsonProperty("humidity")
     public void setHumidity(Integer humidity) {
@@ -79,9 +64,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @return
-     *     The pressure
+     * @return The pressure
      */
     @JsonProperty("pressure")
     public Double getPressure() {
@@ -89,9 +72,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @param pressure
-     *     The pressure
+     * @param pressure The pressure
      */
     @JsonProperty("pressure")
     public void setPressure(Double pressure) {
@@ -99,9 +80,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @return
-     *     The tempMin
+     * @return The tempMin
      */
     @JsonProperty("temp_min")
     public Double getTempMin() {
@@ -109,9 +88,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @param tempMin
-     *     The temp_min
+     * @param tempMin The temp_min
      */
     @JsonProperty("temp_min")
     public void setTempMin(Double tempMin) {
@@ -119,9 +96,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @return
-     *     The tempMax
+     * @return The tempMax
      */
     @JsonProperty("temp_max")
     public Double getTempMax() {
@@ -129,9 +104,7 @@ public class Main {
     }
 
     /**
-     * 
-     * @param tempMax
-     *     The temp_max
+     * @param tempMax The temp_max
      */
     @JsonProperty("temp_max")
     public void setTempMax(Double tempMax) {

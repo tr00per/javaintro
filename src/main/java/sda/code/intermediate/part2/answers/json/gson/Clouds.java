@@ -1,12 +1,10 @@
-
 package sda.code.intermediate.part2.answers.json.gson;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Clouds {
 
@@ -15,18 +13,14 @@ public class Clouds {
     private Integer all;
 
     /**
-     * 
-     * @return
-     *     The all
+     * @return The all
      */
     public Integer getAll() {
         return all;
     }
 
     /**
-     * 
-     * @param all
-     *     The all
+     * @param all The all
      */
     public void setAll(Integer all) {
         this.all = all;

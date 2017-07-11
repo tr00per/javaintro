@@ -1,4 +1,3 @@
-
 package sda.code.intermediate.part2.livecoding.weather.modelpogody;
 
 import com.google.gson.annotations.Expose;

@@ -1,12 +1,10 @@
-
 package sda.code.intermediate.part2.answers.json.gson;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Coord {
 
@@ -18,36 +16,28 @@ public class Coord {
     private Double lat;
 
     /**
-     * 
-     * @return
-     *     The lon
+     * @return The lon
      */
     public Double getLon() {
         return lon;
     }
 
     /**
-     * 
-     * @param lon
-     *     The lon
+     * @param lon The lon
      */
     public void setLon(Double lon) {
         this.lon = lon;
     }
 
     /**
-     * 
-     * @return
-     *     The lat
+     * @return The lat
      */
     public Double getLat() {
         return lat;
     }
 
     /**
-     * 
-     * @param lat
-     *     The lat
+     * @param lat The lat
      */
     public void setLat(Double lat) {
         this.lat = lat;

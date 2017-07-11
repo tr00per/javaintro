@@ -12,14 +12,14 @@ package sda.code.intermediate.part1.exercises.patterns;
  */
 public class SettingMissing extends RuntimeException {
 
-	/**
-	 * serialVersionUID - potrzebne przy używaniu javowej serializacji binarnej.
-	 * Wartość powinna zostać zmieniona, jeśli zmieni się coś w środku klasy.
-	 */
-	private static final long serialVersionUID = 5534548210197090062L;
+    /**
+     * serialVersionUID - potrzebne przy używaniu javowej serializacji binarnej.
+     * Wartość powinna zostać zmieniona, jeśli zmieni się coś w środku klasy.
+     */
+    private static final long serialVersionUID = 5534548210197090062L;
 
-	public SettingMissing(String name) {
-		super("Key not found: " + name);
-	}
+    public SettingMissing(String name) {
+        super("Key not found: " + name);
+    }
 
 }

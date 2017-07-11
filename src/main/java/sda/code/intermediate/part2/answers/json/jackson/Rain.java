@@ -1,23 +1,16 @@
-
 package sda.code.intermediate.part2.answers.json.jackson;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "3h"
+        "3h"
 })
 public class Rain {
 
@@ -27,9 +20,7 @@ public class Rain {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The _3h
+     * @return The _3h
      */
     @JsonProperty("3h")
     public Integer get3h() {
@@ -37,9 +28,7 @@ public class Rain {
     }
 
     /**
-     * 
-     * @param _3h
-     *     The 3h
+     * @param _3h The 3h
      */
     @JsonProperty("3h")
     public void set3h(Integer _3h) {

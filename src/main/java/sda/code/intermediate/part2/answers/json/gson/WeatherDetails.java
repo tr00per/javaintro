@@ -1,12 +1,10 @@
-
 package sda.code.intermediate.part2.answers.json.gson;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class WeatherDetails {
 
@@ -24,72 +22,56 @@ public class WeatherDetails {
     private String icon;
 
     /**
-     * 
-     * @return
-     *     The id
+     * @return The id
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * 
-     * @param id
-     *     The id
+     * @param id The id
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 
-     * @return
-     *     The main
+     * @return The main
      */
     public String getMain() {
         return main;
     }
 
     /**
-     * 
-     * @param main
-     *     The main
+     * @param main The main
      */
     public void setMain(String main) {
         this.main = main;
     }
 
     /**
-     * 
-     * @return
-     *     The description
+     * @return The description
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * 
-     * @param description
-     *     The description
+     * @param description The description
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * 
-     * @return
-     *     The icon
+     * @return The icon
      */
     public String getIcon() {
         return icon;
     }
 
     /**
-     * 
-     * @param icon
-     *     The icon
+     * @param icon The icon
      */
     public void setIcon(String icon) {
         this.icon = icon;

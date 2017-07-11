@@ -5,6 +5,6 @@ import java.util.Optional;
 
 public interface PobieraczkaPogody {
 
-	Optional<String> wykonajZapytanie(URI uri);
+    Optional<String> wykonajZapytanie(URI uri);
 
 }

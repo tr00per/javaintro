@@ -5,10 +5,10 @@ import java.util.function.Consumer;
 
 public interface GameWorld {
 
-	GameWorld step(Filler stepFiller);
+    GameWorld step(Filler stepFiller);
 
-	void forEach(Consumer<GameEntity> entityEnjoyer);
+    void forEach(Consumer<GameEntity> entityEnjoyer);
 
-	Optional<GameEntity> get(int x, int y);
+    Optional<GameEntity> get(int x, int y);
 
 }

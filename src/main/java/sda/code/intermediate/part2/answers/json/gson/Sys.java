@@ -1,12 +1,10 @@
-
 package sda.code.intermediate.part2.answers.json.gson;
-
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Sys {
 
@@ -21,54 +19,42 @@ public class Sys {
     private Integer sunset;
 
     /**
-     * 
-     * @return
-     *     The country
+     * @return The country
      */
     public String getCountry() {
         return country;
     }
 
     /**
-     * 
-     * @param country
-     *     The country
+     * @param country The country
      */
     public void setCountry(String country) {
         this.country = country;
     }
 
     /**
-     * 
-     * @return
-     *     The sunrise
+     * @return The sunrise
      */
     public Integer getSunrise() {
         return sunrise;
     }
 
     /**
-     * 
-     * @param sunrise
-     *     The sunrise
+     * @param sunrise The sunrise
      */
     public void setSunrise(Integer sunrise) {
         this.sunrise = sunrise;
     }
 
     /**
-     * 
-     * @return
-     *     The sunset
+     * @return The sunset
      */
     public Integer getSunset() {
         return sunset;
     }
 
     /**
-     * 
-     * @param sunset
-     *     The sunset
+     * @param sunset The sunset
      */
     public void setSunset(Integer sunset) {
         this.sunset = sunset;

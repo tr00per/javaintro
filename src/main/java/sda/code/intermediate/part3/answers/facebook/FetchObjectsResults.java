@@ -5,9 +5,9 @@ import com.restfb.types.Page;
 import com.restfb.types.User;
 
 public class FetchObjectsResults {
-	@Facebook
-	public User me;
+    @Facebook
+    public User me;
 
-	@Facebook("koneserzyrozowychsloni")
-	public Page page;
+    @Facebook("koneserzyrozowychsloni")
+    public Page page;
 }

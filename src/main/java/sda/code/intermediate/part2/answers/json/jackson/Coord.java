@@ -1,24 +1,17 @@
-
 package sda.code.intermediate.part2.answers.json.jackson;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "lon",
-    "lat"
+        "lon",
+        "lat"
 })
 public class Coord {
 
@@ -30,9 +23,7 @@ public class Coord {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The lon
+     * @return The lon
      */
     @JsonProperty("lon")
     public Double getLon() {
@@ -40,9 +31,7 @@ public class Coord {
     }
 
     /**
-     * 
-     * @param lon
-     *     The lon
+     * @param lon The lon
      */
     @JsonProperty("lon")
     public void setLon(Double lon) {
@@ -50,9 +39,7 @@ public class Coord {
     }
 
     /**
-     * 
-     * @return
-     *     The lat
+     * @return The lat
      */
     @JsonProperty("lat")
     public Double getLat() {
@@ -60,9 +47,7 @@ public class Coord {
     }
 
     /**
-     * 
-     * @param lat
-     *     The lat
+     * @param lat The lat
      */
     @JsonProperty("lat")
     public void setLat(Double lat) {

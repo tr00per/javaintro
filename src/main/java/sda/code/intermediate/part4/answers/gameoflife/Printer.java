@@ -4,8 +4,8 @@ import java.util.function.Consumer;
 
 public interface Printer extends Consumer<GameEntity> {
 
-	void reset();
+    void reset();
 
-	@Override
-	void accept(GameEntity e);
+    @Override
+    void accept(GameEntity e);
 }

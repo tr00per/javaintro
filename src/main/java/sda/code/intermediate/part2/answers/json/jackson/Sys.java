@@ -1,25 +1,18 @@
-
 package sda.code.intermediate.part2.answers.json.jackson;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "country",
-    "sunrise",
-    "sunset"
+        "country",
+        "sunrise",
+        "sunset"
 })
 public class Sys {
 
@@ -33,9 +26,7 @@ public class Sys {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The country
+     * @return The country
      */
     @JsonProperty("country")
     public String getCountry() {
@@ -43,9 +34,7 @@ public class Sys {
     }
 
     /**
-     * 
-     * @param country
-     *     The country
+     * @param country The country
      */
     @JsonProperty("country")
     public void setCountry(String country) {
@@ -53,9 +42,7 @@ public class Sys {
     }
 
     /**
-     * 
-     * @return
-     *     The sunrise
+     * @return The sunrise
      */
     @JsonProperty("sunrise")
     public Integer getSunrise() {
@@ -63,9 +50,7 @@ public class Sys {
     }
 
     /**
-     * 
-     * @param sunrise
-     *     The sunrise
+     * @param sunrise The sunrise
      */
     @JsonProperty("sunrise")
     public void setSunrise(Integer sunrise) {
@@ -73,9 +58,7 @@ public class Sys {
     }
 
     /**
-     * 
-     * @return
-     *     The sunset
+     * @return The sunset
      */
     @JsonProperty("sunset")
     public Integer getSunset() {
@@ -83,9 +66,7 @@ public class Sys {
     }
 
     /**
-     * 
-     * @param sunset
-     *     The sunset
+     * @param sunset The sunset
      */
     @JsonProperty("sunset")
     public void setSunset(Integer sunset) {

@@ -1,26 +1,19 @@
-
 package sda.code.intermediate.part2.answers.json.jackson;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.fasterxml.jackson.annotation.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "id",
-    "main",
-    "description",
-    "icon"
+        "id",
+        "main",
+        "description",
+        "icon"
 })
 public class WeatherDetails {
 
@@ -36,9 +29,7 @@ public class WeatherDetails {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The id
+     * @return The id
      */
     @JsonProperty("id")
     public Integer getId() {
@@ -46,9 +37,7 @@ public class WeatherDetails {
     }
 
     /**
-     * 
-     * @param id
-     *     The id
+     * @param id The id
      */
     @JsonProperty("id")
     public void setId(Integer id) {
@@ -56,9 +45,7 @@ public class WeatherDetails {
     }
 
     /**
-     * 
-     * @return
-     *     The main
+     * @return The main
      */
     @JsonProperty("main")
     public String getMain() {
@@ -66,9 +53,7 @@ public class WeatherDetails {
     }
 
     /**
-     * 
-     * @param main
-     *     The main
+     * @param main The main
      */
     @JsonProperty("main")
     public void setMain(String main) {
@@ -76,9 +61,7 @@ public class WeatherDetails {
     }
 
     /**
-     * 
-     * @return
-     *     The description
+     * @return The description
      */
     @JsonProperty("description")
     public String getDescription() {
@@ -86,9 +69,7 @@ public class WeatherDetails {
     }
 
     /**
-     * 
-     * @param description
-     *     The description
+     * @param description The description
      */
     @JsonProperty("description")
     public void setDescription(String description) {
@@ -96,9 +77,7 @@ public class WeatherDetails {
     }
 
     /**
-     * 
-     * @return
-     *     The icon
+     * @return The icon
      */
     @JsonProperty("icon")
     public String getIcon() {
@@ -106,9 +85,7 @@ public class WeatherDetails {
     }
 
     /**
-     * 
-     * @param icon
-     *     The icon
+     * @param icon The icon
      */
     @JsonProperty("icon")
     public void setIcon(String icon) {
