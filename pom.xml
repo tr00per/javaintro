@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>sda.code</groupId>
     <artifactId>Intermediate</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>Intermediate</name>
     <description>Intermediate Programming Exercises by Artur Czajka</description>
     <properties>
