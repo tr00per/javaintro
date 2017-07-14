@@ -22,7 +22,14 @@ public class AlgorithmCreateArrayTest {
     }
 
     @Test
-    @Parameters({"0", "1", "10", "1000"})
+    @Parameters({"0", "1"})
+    public void testCreateRandomVeryShortArray(int length) {
+        int[] array = sut.createRandomArray(length);
+        assertEquals(length, array.length);
+    }
+
+    @Test
+    @Parameters({"10", "100", "1000"})
     public void testCreateRandomArray(int length) {
         int[] array = sut.createRandomArray(length);
         assertEquals(length, array.length);
