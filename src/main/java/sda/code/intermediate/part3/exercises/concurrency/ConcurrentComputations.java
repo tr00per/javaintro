@@ -12,6 +12,8 @@ public class ConcurrentComputations {
 
         public long compute() {
             RichPrint.println("Pierwszy element: " + inArr[0]);
+            // do mierzenia czasu wykonania operacji
+            // należy używać nanoTime(), nigdy currentTimeMillis()
             long start = System.nanoTime();
             outArr = new Sorting().bubbleSort(inArr);
             long stop = System.nanoTime();

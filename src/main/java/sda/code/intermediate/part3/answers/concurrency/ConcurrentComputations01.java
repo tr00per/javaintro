@@ -21,6 +21,7 @@ public class ConcurrentComputations01 {
             RichPrint.println("Pierwszy element: " + outArr[0]);
             return stop - start;
         }
+
     }
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {

@@ -15,7 +15,7 @@ public class Queue {
      * konsumerami.
      */
     public static void main(String[] args) {
-        for (int i = 0; i < NUM_OF_CONSUMER_THREADS * 5; ++i) {
+        for (int i = 0; i < NUM_OF_CONSUMER_THREADS * 10; ++i) {
             queue.add(i);
         }
         System.out.println("Everything added!");

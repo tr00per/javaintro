@@ -12,8 +12,8 @@ public class Access03 {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 20; ++i) {
-            new Thread(() -> add()).start();
+        for (int i = 0; i < 1000; ++i) {
+            new Thread(Access03::add).start();
         }
         Thread.sleep(1000);
         System.out.println(accumulator);

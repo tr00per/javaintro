@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
 
-//import java.util.ArrayList;
-//import java.util.List;
-
 /**
  * Program zlicza wystąpienia słów w zadanej ksiżące i wyświetla 20
  * najpopularniejszych słów razem z przypisanymi wartościami.
@@ -17,6 +14,7 @@ public class WordCount {
     public static void main(String[] args) throws IOException {
         // Ustal ścieżkę do pliku
         File book = Paths.get(System.getProperty("user.home"), "data", "Shakespeare.txt").toFile();
+//        File book = Paths.get(System.getProperty("user.home"), "Desktop", "Shakespeare.txt").toFile();
 
         // Podstawową strukturą będzie mapa String na Integer. W szczególności
         // HashMap oferuje przez większość czasu stały czas dostępu do
@@ -50,7 +48,7 @@ public class WordCount {
                 System.out.println(e.getKey() + " = " + e.getValue());
             }
         }
-
+        System.out.println("-------------------");
         // Części imperatywne zamknięte są w swoich pod-blokach, żeby ograniczyć
         // zasięg widoczności zmiennych tymczasowych.
         {
@@ -62,11 +60,11 @@ public class WordCount {
                 System.out.println(e.getKey() + " = " + e.getValue());
             }
         }
-
+        System.out.println("-------------------");
         // Styl funkcyjny z własną funkcją porównującą
         words.entrySet().stream().sorted((e1, e2) -> e2.getValue() - e1.getValue()).limit(20)
                 .forEach(e -> System.out.println(e.getKey() + " = " + e.getValue()));
-
+        System.out.println("-------------------");
         // Styl funkcyjny z użyciem Comparatora dostępnego dla wpisów mapy
         words.entrySet().stream().sorted(Map.Entry.comparingByValue(Collections.reverseOrder())).limit(20)
                 .forEach(e -> System.out.println(e.getKey() + " = " + e.getValue()));

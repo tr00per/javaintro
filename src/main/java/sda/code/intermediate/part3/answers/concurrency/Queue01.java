@@ -2,10 +2,7 @@ package sda.code.intermediate.part3.answers.concurrency;
 
 import sda.code.intermediate.part3.RichPrint;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Queue01 {

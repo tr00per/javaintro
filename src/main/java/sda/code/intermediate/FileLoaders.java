@@ -7,8 +7,8 @@ public class FileLoaders {
 
     public Properties loadDefaultProperties() {
         Properties prop = new Properties();
-        InputStream config = FileLoaders.class.getResourceAsStream("/default.conf");
-        try {
+        try (InputStream config =
+                     FileLoaders.class.getResourceAsStream("/default.conf")) {
             prop.load(config);
         } catch (IOException e) {
             throw new RuntimeException(e);

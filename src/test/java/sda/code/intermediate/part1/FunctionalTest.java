@@ -23,8 +23,10 @@ public class FunctionalTest {
     public void setUp() throws Exception {
         sut = new Functional();
         list = Arrays.asList(4, 6, 11, 1, 8, 0, -5, 4, -1);
-        products = Arrays.asList(new Item("TV", new BigDecimal("500"), 10.0),
-                new Service("Movie stream", new BigDecimal("10"), 2));
+        products = Arrays.asList(
+                new Item("TV", new BigDecimal("500"), 10.0),
+                new Service("Movie stream", new BigDecimal("10"), 2)
+        );
     }
 
     @Test

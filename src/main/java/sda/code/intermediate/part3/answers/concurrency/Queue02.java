@@ -2,10 +2,7 @@ package sda.code.intermediate.part3.answers.concurrency;
 
 import sda.code.intermediate.part3.RichPrint;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.*;
 
 public class Queue02 {
 
@@ -45,7 +42,7 @@ public class Queue02 {
             producers.submit(() -> queue.add(v));
         }
         producers.shutdown();
-        // producers.awaitTermination(1, TimeUnit.SECONDS);
+//        System.out.println("awaitTermination: " + producers.awaitTermination(1, TimeUnit.SECONDS));
 
         queue.add(-1);
         // consumer.awaitTermination(1, TimeUnit.SECONDS);
