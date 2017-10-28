@@ -1,6 +1,8 @@
 package sda.code.intermediate.part1;
 
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import sda.code.intermediate.part1.exercises.Algorithms;
 
@@ -20,6 +22,7 @@ public class AlgorithmsTest {
     @Test
     public void testSmallest() {
         assertEquals(1, sut.smallest(new int[]{1, 2, 3, 4, 5}));
+        assertEquals(2, sut.smallest(new int[]{2, 3, 4, 5, 6}));
         assertEquals(-1, sut.smallest(new int[]{1, 2, 3, -1, 4, 5}));
         assertEquals(0, sut.smallest(new int[]{0}));
         assertEquals(0, sut.smallest(new int[]{0, 0}));

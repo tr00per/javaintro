@@ -2,6 +2,7 @@ package sda.code.intermediate.part1extra;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Generyki {
 
@@ -26,7 +27,7 @@ public class Generyki {
         }
 
         public <V> boolean porównaj(V toDrugie) {
-            return schowek.equals(toDrugie);
+            return Objects.equals(schowek, toDrugie);
         }
     }
 

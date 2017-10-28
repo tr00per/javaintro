@@ -6,7 +6,7 @@ import java.util.Properties;
 
 /**
  * Klasa Settings ma przechowywać jedyną kopię wczytanej konfiguracji
- * (Singleton) oraz stanowić adapter dla budowanej klasy Properties.
+ * (Singleton) oraz stanowić adapter dla wbudowanej klasy Properties.
  */
 public class Settings {
 
