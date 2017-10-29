@@ -3,6 +3,7 @@ package sda.code.intermediate.part1extra.java4;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 public class Generyki {
     public static class StringPojemnik {
@@ -50,6 +51,11 @@ public class Generyki {
 
         public boolean porównaj(Pojemnik<Coś> tenDrugi) {
             return Objects.equals(weźWartość(), tenDrugi.weźWartość());
+        }
+
+        // a teraz z Pojemnika zrobimy funktor
+        public <CośInego> Pojemnik<CośInego> map(Function<Coś, CośInego> func) {
+            return new Pojemnik<>(func.apply(wartość));
         }
     }
 
