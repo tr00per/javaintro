@@ -1,4 +1,4 @@
-package sda.code.intermediate.part1extra;
+package sda.code.intermediate.part1extra.java3;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
