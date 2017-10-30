@@ -86,6 +86,27 @@ public class DesignPatternsTest {
         new ServiceBuilder().withName("MMO").withPrice("X").withTime(10).build();
     }
 
+    @Test(expected = InvalidBuilderState.class)
+    public void failOnEmptyName() {
+        new ItemBuilder().withName("").withPrice("500").withWeight(10.0).build();
+    }
+
+    @Test(expected = InvalidBuilderState.class)
+    public void failOnNegativePrice() {
+        new ItemBuilder().withName("TV").withPrice("-1").withWeight(10.0).build();
+    }
+
+    @Test(expected = InvalidBuilderState.class)
+    public void failOnNegativeServiceTime() {
+        new ServiceBuilder().withName("Movie stream").withPrice("10").withTime(-1).build();
+    }
+
+    @Test
+    public void noValidationUntilBuild() {
+        new ItemBuilder().withName("").withPrice("-1").withWeight(-1.0);
+        new ServiceBuilder().withName(null).withPrice("X").withTime(-1);
+    }
+
     @Test
     public void productFactoryForItems() {
         Item expected = new Item("TV", new BigDecimal("500"), 10.0);

@@ -32,6 +32,9 @@ public abstract class ProductBuilder<T, R> {
         if (name == null) {
             throw new InvalidBuilderState("Name cannot be null");
         }
+        if (name.isEmpty()) {
+            throw new InvalidBuilderState("Name must not be empty");
+        }
         if (price == null) {
             throw new InvalidBuilderState("Price cannot be null");
         }
