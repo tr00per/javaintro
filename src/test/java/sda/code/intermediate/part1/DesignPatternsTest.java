@@ -2,6 +2,7 @@ package sda.code.intermediate.part1;
 
 import org.junit.Test;
 import sda.code.intermediate.part1.exercises.data.Item;
+import sda.code.intermediate.part1.exercises.data.Person;
 import sda.code.intermediate.part1.exercises.data.Product;
 import sda.code.intermediate.part1.exercises.data.Service;
 import sda.code.intermediate.part1.exercises.patterns.*;
@@ -11,20 +12,39 @@ import java.math.BigDecimal;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+//import static org.junit.Assert.assertTrue;
+
 public class DesignPatternsTest {
 
     @Test
     public void loadingConfig() {
         fail("Uncomment test");
-//		assertTrue(Settings.CONFIG.getBoolean("success"));
-//		assertEquals(42, Settings.CONFIG.getInteger("answer"));
-//		assertEquals("World", Settings.CONFIG.getString("hello.msg"));
+//        assertEquals("World", Settings.CONFIG.getString("hello.msg"));
+//        assertTrue(Settings.CONFIG.getBoolean("success"));
+//        assertEquals(42, Settings.CONFIG.getInteger("answer"));
     }
 
     @Test(expected = SettingMissing.class)
     public void loadingMissingConfig() {
         fail("Uncomment test");
-//		Settings.CONFIG.getBoolean("non-existent");
+//        Settings.CONFIG.getBoolean("non-existent");
+    }
+
+    @Test
+    public void buildPerson() {
+        Person expected = new Person("John", "Smith");
+        Person actual = new PersonBuilder().withFirstName("John").withLastName("Smith").build();
+        assertEquals(expected, actual);
+    }
+
+    @Test(expected = InvalidBuilderState.class)
+    public void missingFirstName() {
+        new PersonBuilder().withLastName("Smith").build();
+    }
+
+    @Test(expected = InvalidBuilderState.class)
+    public void missingLastName() {
+        new PersonBuilder().withFirstName("John").build();
     }
 
     @Test
