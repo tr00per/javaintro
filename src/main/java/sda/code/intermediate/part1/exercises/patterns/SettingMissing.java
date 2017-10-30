@@ -4,7 +4,7 @@ package sda.code.intermediate.part1.exercises.patterns;
  * Wyjątek informujący użytkownika o brakującym ustawieniu. Jest zgłaszany jako
  * wyjątek niesprawdzany, ponieważ przez większość czasu, jeśli użytkownik
  * próbuje odwołać się do nieistniejącego ustawienia, to jest to błąd w
- * konfiguracji bądź błąd w użyciu. I podobnie, przez większość czasu ocekujemy,
+ * konfiguracji bądź błąd w użyciu. I podobnie, przez większość czasu oczekujemy,
  * że operacja pobrania ustawienia z konfiguracji zakończy się powodzeniem, więc
  * zmuszanie użytkownika do jawnej obsługi tego wyjątku doprowadziłoby go do
  * napisania własnego adaptera, który przerzucałby wyjątki sprawdzane na
