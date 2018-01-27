@@ -10,11 +10,13 @@ public class SingleFileGameOfLife {
                 world[y][x] = Math.random() < 0.5;
             }
         }
+
+        long iteration = 0;
         // Pętla świata (nieskończona albo z dużą ilością powtórzeń, >100)
         while (true) {
             // - Wyświetl stan świata na konsoli
             //   (użyj spacji do reprezentowania pustej komórki i '@' albo '#' dla pełnej
-            System.out.println("--------------------------------------------------");
+            System.out.println("-------------------------------------------------- " + iteration++);
             for (int y = 0; y < world.length; ++y) {
                 for (int x = 0; x < world[y].length; ++x) {
                     System.out.print(world[y][x] ? '#' : ' ');
