@@ -1,6 +1,6 @@
 package sda.code.intermediate.part1extra.java3;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+import org.apache.poi.util.NotImplemented;
 
 public class Interfejsy {
     public interface Witacz {
@@ -94,9 +94,9 @@ public class Interfejsy {
             }
 
             @Override
+            @NotImplemented
             public void pożegnaj(String imie) {
-                // nic nie rób
-                throw new NotImplementedException();
+
             }
         });
         hello(new Witacz() {
