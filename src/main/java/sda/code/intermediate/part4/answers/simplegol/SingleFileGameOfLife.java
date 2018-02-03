@@ -19,7 +19,7 @@ public class SingleFileGameOfLife {
             System.out.println("-------------------------------------------------- " + iteration++);
             for (int y = 0; y < world.length; ++y) {
                 for (int x = 0; x < world[y].length; ++x) {
-                    System.out.print(world[y][x] ? '#' : ' ');
+                    System.out.print(world[y][x] ? '☻' : '.');
                 }
                 System.out.println();
             }
