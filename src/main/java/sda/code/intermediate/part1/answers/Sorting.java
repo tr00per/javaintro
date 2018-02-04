@@ -13,18 +13,19 @@ public class Sorting {
     }
 
     private void bubbleSortInner(int array[]) {
-        boolean changed;
+        int n = array.length;
+        boolean swapped;
         do {
-            changed = false;
-            for (int i = 1; i < array.length; ++i) {
+            swapped = false;
+            for (int i = 1; i < n; ++i) {
                 if (array[i - 1] > array[i]) {
                     int tmp = array[i];
                     array[i] = array[i - 1];
                     array[i - 1] = tmp;
-                    changed = true;
+                    swapped = true;
                 }
             }
-        } while (changed);
+        } while (swapped);
     }
 
     public int[] quickSort(int array[]) {
@@ -35,27 +36,29 @@ public class Sorting {
 
     private void quickSortInner(int[] out, int low, int high) {
         if (low < high) {
-            int p = quickSortInnerPartition(out, low, high);
+            int p = partition(out, low, high);
             quickSortInner(out, low, p - 1);
             quickSortInner(out, p + 1, high);
         }
     }
 
-    private int quickSortInnerPartition(int[] array, int low, int high) {
-        int pivot = array[high];
-        int i = low;
-        for (int k = low; k < high; ++k) {
-            if (array[k] <= pivot) {
-                int tmp = array[k];
-                array[k] = array[i];
-                array[i] = tmp;
-                i += 1;
+    private int partition(int[] out, int low, int high) {
+        int pivot = out[high];
+        int i = low - 1;
+        for (int j = low; j < high; ++j) {
+            if (out[j] < pivot) {
+                i = i + 1;
+                int tmp = out[i];
+                out[i] = out[j];
+                out[j] = tmp;
             }
         }
-        int tmp = array[high];
-        array[high] = array[i];
-        array[i] = tmp;
-        return i;
+        if (out[high] < out[i + 1]) {
+            int tmp = out[i + 1];
+            out[i + 1] = out[high];
+            out[high] = tmp;
+        }
+        return i + 1;
     }
 
     public int[] mergeSort(int array[]) {
@@ -63,33 +66,42 @@ public class Sorting {
             return array;
         }
 
-        int halfLength = array.length / 2;
-        int odd = array.length % 2 == 1 ? 1 : 0;
-        int left[] = new int[halfLength];
-        int right[] = new int[halfLength + odd];
-        for (int i = 0; i < halfLength; ++i) {
-            left[i] = array[i];
-        }
-        for (int i = halfLength, o = 0; i < array.length; ++i, ++o) {
-            right[o] = array[i];
+        int[] left = new int[array.length / 2];
+        int[] right = new int[array.length / 2 + (array.length % 2)];
+
+        for (int i = 0, l = 0, r = 0; i < array.length; ++i) {
+            if (i < array.length / 2) {
+                left[l] = array[i];
+                l += 1;
+            } else {
+                right[r] = array[r++];
+            }
         }
 
-        return mergeSortInnerMerge(mergeSort(left), mergeSort(right));
+        left = mergeSort(left);
+        right = mergeSort(right);
+
+        return merge(left, right);
     }
 
-    private int[] mergeSortInnerMerge(int[] left, int[] right) {
-        int result[] = new int[left.length + right.length];
+    private int[] merge(int[] left, int[] right) {
+        int[] result = new int[left.length + right.length];
 
-        int leftIdx = 0;
-        int rightIdx = 0;
-        for (int i = 0; i < result.length; ++i) {
-            if (rightIdx >= right.length || leftIdx < left.length && left[leftIdx] < right[rightIdx]) {
-                result[i] = left[leftIdx];
-                leftIdx += 1;
+        int l = 0, r = 0, i = 0;
+        for (; l < left.length && r < right.length; ++i) {
+            if (left[l] < right[r]) {
+                result[i] = left[l++];
             } else {
-                result[i] = right[rightIdx];
-                rightIdx += 1;
+                result[i] = right[r];
+                r += 1;
             }
+        }
+
+        while (l < left.length) {
+            result[i++] = left[l++];
+        }
+        while (r < right.length) {
+            result[i++] = right[r++];
         }
 
         return result;
