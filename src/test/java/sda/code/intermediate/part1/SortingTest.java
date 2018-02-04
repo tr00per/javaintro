@@ -43,9 +43,9 @@ public class SortingTest {
                 "kyBZ4KxPiyS", "HaQMDRN6PZW", "2OE6ghl2bKX", "8kTG9pr3sI9", "AP1pimvBIyJ"};
         numbersArray = new ArrayList<String>(Arrays.asList("0", "1", "10", "11", "2", "21", "3"));
         sortedNumbersArray = new ArrayList<String>(Arrays.asList("0", "1", "2", "3", "10", "11", "21"));
-        comparableArray = new Person[]{new Person("Mścisław", "Zima"), new Person("Eryk", "Stawski"),
+        comparableArray = new Person[]{new Person("Włodzisław", "Zima"), new Person("Eryk", "Stawski"),
                 new Person("Wojciech", "Gniewek"), new Person("Zbigniew", "Pasternack"),
-                new Person("Włodzisław", "Zima")};
+                new Person("Mścisław", "Zima")};
         comparableSortedArray = new Person[]{new Person("Wojciech", "Gniewek"), new Person("Zbigniew", "Pasternack"),
                 new Person("Eryk", "Stawski"), new Person("Mścisław", "Zima"), new Person("Włodzisław", "Zima")};
     }
