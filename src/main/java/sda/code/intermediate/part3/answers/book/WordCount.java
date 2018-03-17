@@ -29,8 +29,10 @@ public class WordCount {
         // użyć try-with-resource, które zajmie się zamknięciem zasobu za nas.
         try (Scanner sc = new Scanner(book)) {
             // Plik będzie podzielony po znakach nie należących do zbioru
-            // [_a-zA-Z0-9] (\W), przynajmniej jedno wystąpienie (+)
-            sc.useDelimiter("\\W+");
+            // [_a-zA-Z0-9] (\W), przynajmniej jedno wystąpienie (+).
+            // Użycie + powoduje, że zbitki separatorów są rozpatrywane łącznie, np. ". ", ", "
+            // Użycie [^a-zA-Z0-9']+ spowoduje rozpoznanie słów złączonych apostforami jako całości.
+            sc.useDelimiter("[^a-zA-Z0-9']+");
 
             gatherStats(sc, words);
         }
@@ -42,7 +44,8 @@ public class WordCount {
             // Styl imperatywny z własną funkcją porównującą
             // Przepisujemy zbiór wartości z mapy do listy, bo ani mapy, ani
             // zbioru, nie można posortować według swoch kryteriów.
-            List<Map.Entry<String, Integer>> list = new ArrayList<>(words.entrySet());
+            Set<Map.Entry<String, Integer>> histogramSet = words.entrySet();
+            List<Map.Entry<String, Integer>> list = new ArrayList<>(histogramSet);
             list.sort((e1, e2) -> e2.getValue() - e1.getValue());
             for (Map.Entry<String, Integer> e : list.subList(0, 20)) {
                 System.out.println(e.getKey() + " = " + e.getValue());
@@ -56,6 +59,7 @@ public class WordCount {
             // mapy
             List<Map.Entry<String, Integer>> list = new ArrayList<>(words.entrySet());
             list.sort(Map.Entry.comparingByValue(Collections.reverseOrder()));
+//            list.sort(Map.Entry.<String, Integer>comparingByValue().reversed());
             for (Map.Entry<String, Integer> e : list.subList(0, 20)) {
                 System.out.println(e.getKey() + " = " + e.getValue());
             }
