@@ -42,14 +42,19 @@ public class Traditional implements Summarizer {
 
     private void printEntry(CSVPrinter printer, Entry<String, SummaryRecord> entry) throws IOException {
         SummaryRecord summary = entry.getValue();
+
         printer.printRecord(entry.getKey(), summary.count, summary.totalValue / summary.count, summary.minValue,
                 summary.maxValue);
     }
 
     private void fillSummary(Map<String, SummaryRecord> summarizer) throws IOException {
-        Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader().parse(reader);
-        for (CSVRecord record : records) {
-            updateWithRecord(summarizer, record);
+        Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(reader);
+        try {
+            for (CSVRecord record : records) {
+                updateWithRecord(summarizer, record);
+            }
+        } finally {
+            reader.close();
         }
     }
 
@@ -72,6 +77,7 @@ public class Traditional implements Summarizer {
         if (summary.maxValue == null || summary.maxValue < value) {
             summary.maxValue = value;
         }
+
         summarizer.put(group, summary);
     }
 }
