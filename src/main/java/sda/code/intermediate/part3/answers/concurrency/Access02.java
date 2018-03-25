@@ -8,8 +8,10 @@ public class Access02 {
     private static final Object lock = new Object();
 
     private static /*synchronized*/ void add() {
-        synchronized (lock) {
-            accumulator += 1L;
+        if (accumulator < 500) {
+            synchronized (lock) {
+                accumulator += 1L;
+            }
         }
         RichPrint.println(accumulator);
     }

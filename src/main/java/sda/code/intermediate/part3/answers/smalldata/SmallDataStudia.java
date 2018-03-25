@@ -96,7 +96,8 @@ public class SmallDataStudia {
         for (Kurs kurs : kursy) {
             if (kurs.getPoziomKształcenia().equals(PoziomKształcenia.PIERWSZY_STOPIEŃ) ||
                     kurs.getPoziomKształcenia().equals(PoziomKształcenia.DRUGI_STOPIEŃ)) {
-                Map<PoziomKształcenia, Integer> poziomy = formyIPoziomy.getOrDefault(kurs.getFormaKształcenia(), new HashMap<>());
+                Map<PoziomKształcenia, Integer> poziomy =
+                        formyIPoziomy.getOrDefault(kurs.getFormaKształcenia(), new HashMap<>());
 
                 int ilość = poziomy.getOrDefault(kurs.getPoziomKształcenia(), 0);
                 ilość += 1;
@@ -105,6 +106,31 @@ public class SmallDataStudia {
                 formyIPoziomy.put(kurs.getFormaKształcenia(), poziomy);
             }
         }
+        // wersja bez getOrDefault
+//        for (Kurs kurs : kursy) {
+//            if (kurs.getPoziomKształcenia().equals(PoziomKształcenia.PIERWSZY_STOPIEŃ) ||
+//                    kurs.getPoziomKształcenia().equals(PoziomKształcenia.DRUGI_STOPIEŃ)) {
+//
+//                if (formyIPoziomy.containsKey(kurs.getFormaKształcenia())) {
+//                    Map<PoziomKształcenia, Integer> poziomy = formyIPoziomy.get(kurs.getFormaKształcenia());
+//
+//                    if (poziomy.containsKey(kurs.getPoziomKształcenia())) {
+//                        int ilość = poziomy.get(kurs.getPoziomKształcenia());
+//                        ilość += 1;
+//                        poziomy.put(kurs.getPoziomKształcenia(), ilość);
+//                    }
+//                    else {
+//                        poziomy.put(kurs.getPoziomKształcenia(), 1);
+//                    }
+//                }
+//                else {
+//                    Map<PoziomKształcenia, Integer> poziomy = new HashMap<>();
+//                    poziomy.put(kurs.getPoziomKształcenia(), 1);
+//                    formyIPoziomy.put(kurs.getFormaKształcenia(), poziomy);
+//                }
+//
+//            }
+//        }
         System.out.println(formyIPoziomy);
 
         Path sciezkaWyjściowa3 = Paths.get(System.getProperty("user.home"), "data", "informatyka_summary3.csv");
