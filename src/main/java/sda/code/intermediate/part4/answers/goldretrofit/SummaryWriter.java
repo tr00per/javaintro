@@ -1,5 +1,6 @@
 package sda.code.intermediate.part4.answers.goldretrofit;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import sda.code.intermediate.part4.answers.goldmodel.GoldPrice;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import static sda.code.intermediate.part4.answers.goldretrofit.Messages.*;
 
+@Slf4j
 public class SummaryWriter {
 
     private File summaryFile;
@@ -21,6 +23,7 @@ public class SummaryWriter {
     }
 
     public void write(List<GoldPrice> prices, String recommendation) {
+        log.debug("Saving...");
         try (Workbook wb = new XSSFWorkbook(); OutputStream sout = new FileOutputStream(summaryFile)) {
             Sheet dataSheet = putData(wb, prices, recommendation);
             drawPlot(dataSheet);

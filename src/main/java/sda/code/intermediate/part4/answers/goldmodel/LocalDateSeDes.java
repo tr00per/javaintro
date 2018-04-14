@@ -4,7 +4,6 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import org.apache.http.ParseException;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -30,7 +29,7 @@ public class LocalDateSeDes extends TypeAdapter<LocalDate> {
             case STRING:
                 return LocalDate.parse(in.nextString(), DateTimeFormatter.ISO_DATE);
             default:
-                throw new ParseException("Expected JSON String, got: " + next.toString());
+                throw new IllegalArgumentException("Expected JSON String, got: " + next.toString());
         }
     }
 

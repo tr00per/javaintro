@@ -1,5 +1,6 @@
 package sda.code.intermediate.part4.answers.goldretrofit;
 
+import lombok.extern.slf4j.Slf4j;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -16,6 +17,7 @@ import java.util.function.BiConsumer;
 
 import static sda.code.intermediate.part4.answers.goldretrofit.Messages.*;
 
+@Slf4j
 public class GoldDigger {
     private static final double THRESHOLD_SELL = 1.01;
     private static final double THRESHOLD_BUY = 0.99;
@@ -28,6 +30,7 @@ public class GoldDigger {
         final Retrofit retrofit = createRetrofit(baseUrl);
         service = retrofit.create(GoldService.class);
         summary = new SummaryWriter(summaryLocation);
+        log.info("Digger ready!");
     }
 
     private Retrofit createRetrofit(String baseUrl) {
@@ -42,18 +45,21 @@ public class GoldDigger {
         Call<List<GoldPrice>> call = newCallByDays(days);
         try {
             runCall(call, summary::write);
+            log.debug("Finished");
         } catch (IOException e) {
             System.err.println(fmt(FAILED_RETRIVAL, e.getMessage()));
         }
     }
 
     private Call<List<GoldPrice>> newCallByDays(int days) {
+        log.debug("Preparing a shovel...");
         LocalDate to = LocalDate.now();
         LocalDate from = to.minusDays(days);
         return service.byDates(from.format(GoldService.DATE_FORMAT), to.format(GoldService.DATE_FORMAT));
     }
 
     private void runCall(Call<List<GoldPrice>> call, BiConsumer<List<GoldPrice>, String> next) throws IOException {
+        log.debug("Shoving!");
         Response<List<GoldPrice>> response = call.execute();
         if (response.isSuccessful()) {
             processPrices(response.body(), next);

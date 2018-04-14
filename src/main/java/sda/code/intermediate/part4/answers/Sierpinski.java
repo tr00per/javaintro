@@ -1,4 +1,4 @@
-package sda.code.intermediate.part3;
+package sda.code.intermediate.part4.answers;
 
 public class Sierpinski {
     private static void carpet(boolean[][] pattern, int size, int x, int y) {
