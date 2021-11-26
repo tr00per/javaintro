@@ -1,7 +1,7 @@
 package sda.code.intermediate.part3.answers.xls;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.*;
 
 import java.io.File;
@@ -15,7 +15,7 @@ public class Compute {
     public static void main(String[] args) throws IOException {
         // E1 - formuła pośrednia, F1 - mnożnik, G1 - wynik
         File spreadsheet = Paths.get(System.getProperty("user.home"), "data", "spreadsheet.xls").toFile();
-        try (NPOIFSFileSystem fs = new NPOIFSFileSystem(spreadsheet); Workbook wb = new HSSFWorkbook(fs)) {
+        try (POIFSFileSystem fs = new POIFSFileSystem(spreadsheet); Workbook wb = new HSSFWorkbook(fs)) {
             final Sheet sheet = wb.getSheetAt(0);
             final Row row = sheet.getRow(0);
 

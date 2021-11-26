@@ -61,7 +61,7 @@ public class FacebookBrowser {
         secret.load(FacebookBrowser.class.getResourceAsStream("/fb.secret"));
         final String appToken = secret.getProperty("app.token");
 
-        return new DefaultFacebookClient(appToken, Version.VERSION_2_8);
+        return new DefaultFacebookClient(appToken, Version.VERSION_12_0);
     }
 
 }

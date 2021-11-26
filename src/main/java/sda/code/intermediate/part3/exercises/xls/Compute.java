@@ -1,6 +1,6 @@
 package sda.code.intermediate.part3.exercises.xls;
 
-import org.apache.poi.poifs.filesystem.NPOIFSFileSystem;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class Compute {
     public static void main(String[] args) throws IOException {
         // E1 - formuła pośrednia, F1 - mnożnik, G1 - wynik
         File spreadsheet = Paths.get(System.getProperty("user.home"), "Desktop", "spreadsheet.xls").toFile();
-        try (NPOIFSFileSystem fs = new NPOIFSFileSystem(spreadsheet)) {
+        try (POIFSFileSystem fs = new POIFSFileSystem(spreadsheet)) {
             System.out.println("Formuła E1: ");
 
             System.out.println("Formuła G1: ");
