@@ -1,6 +1,6 @@
 package sda.code.intermediate.part3.answers.rx;
 
-import rx.Observable;
+import io.reactivex.rxjava3.core.Observable;
 import sda.code.intermediate.part2.answers.json.gson.WeatherGson;
 import sda.code.intermediate.part2.livecoding.weather.api.CityQuery;
 import sda.code.intermediate.part2.livecoding.weather.api.GeoQuery;

@@ -1,9 +1,9 @@
 package sda.code.intermediate.part3.answers.rx;
 
+import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
-import rx.Observable;
 import sda.code.intermediate.part2.answers.json.gson.WeatherGson;
 
 import java.util.Map;

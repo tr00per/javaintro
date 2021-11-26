@@ -1,9 +1,11 @@
 package sda.code.intermediate.part3.answers.rx;
 
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.Disposable;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observer;
 import sda.code.intermediate.part1.answers.patterns.Settings;
 import sda.code.intermediate.part2.answers.json.gson.WeatherDetails;
 import sda.code.intermediate.part2.answers.json.gson.WeatherGson;
@@ -36,14 +38,14 @@ public class Reactive {
 
     private static OpenWeatherService createWeatherService(String endpoint) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(endpoint).addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build();
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create()).build();
 
         return retrofit.create(OpenWeatherService.class);
     }
 
     private static class WeatherObserver implements Observer<WeatherGson> {
         @Override
-        public void onCompleted() {
+        public void onComplete() {
             RichPrint.println("Completed!");
         }
 
@@ -70,6 +72,10 @@ public class Reactive {
             if (weather.getMain() != null) {
                 System.out.println(weather.getMain().getTemp());
             }
+        }
+
+        @Override
+        public void onSubscribe(@NonNull Disposable d) {
         }
     }
 
